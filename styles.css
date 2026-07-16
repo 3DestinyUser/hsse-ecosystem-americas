@@ -2553,6 +2553,12 @@ img {
   color: #fff;
 }
 
+.executive-utilities .executive-ecosystem-button {
+  border-color: rgba(255, 106, 19, 0.72);
+  color: #ffffff;
+  background: rgba(255, 106, 19, 0.14);
+}
+
 .executive-slides,
 .executive-slide {
   position: absolute;
@@ -3987,7 +3993,7 @@ img {
     position: fixed;
   }
 
-  .executive-utilities button:first-child {
+  .executive-utilities [data-action="exec-notes"] {
     display: none;
   }
 
@@ -4155,7 +4161,8 @@ img {
   }
 
   .executive-brand small,
-  .executive-utilities button:nth-child(2) {
+  .executive-utilities [data-action="exec-notes"],
+  .executive-utilities [data-action="exec-restart"] {
     display: none;
   }
 

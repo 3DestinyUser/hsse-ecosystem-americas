@@ -299,6 +299,10 @@ const executiveLoopStages = [
 ];
 
 const executiveDimensionPlates = {
+  ONEcosystem: {
+    image: "assets/one-ecosystem.webp?v=20260716",
+    alt: "HSSE Human Safety Ecosystem overview with all nine connected dimensions"
+  },
   Culture: {
     image: "assets/culture.webp?v=20260716",
     alt: "Culture dimension overview: behaviors, values and human safety culture"
