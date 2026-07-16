@@ -300,23 +300,35 @@ const executiveLoopStages = [
 
 const executiveDimensionPlates = {
   ONEcosystem: {
-    image: "assets/one-ecosystem.webp?v=20260716",
+    image: "assets/one-ecosystem.webp?v=20260716-2",
     alt: "HSSE Human Safety Ecosystem overview with all nine connected dimensions"
   },
   Culture: {
-    image: "assets/culture.webp?v=20260716",
+    image: "assets/culture.webp?v=20260716-2",
     alt: "Culture dimension overview: behaviors, values and human safety culture"
   },
   Prevent: {
-    image: "assets/prevent.webp?v=20260716",
+    image: "assets/prevent.webp?v=20260716-2",
     alt: "Prevent dimension overview: anticipation, signals and preventive action"
   },
   Intelligence: {
-    image: "assets/intelligence.webp?v=20260716",
+    image: "assets/intelligence.webp?v=20260716-2",
     alt: "Intelligence dimension overview: connected data, analytics, models and prediction"
   },
+  Knowledge: {
+    image: "assets/knowledge.webp?v=20260716-2",
+    alt: "Knowledge dimension overview: shared resources, lessons and reusable operational knowledge"
+  },
+  Advisor: {
+    image: "assets/advisor.webp?v=20260716-2",
+    alt: "Advisor dimension overview: recommendations, alerts and assisted decisions"
+  },
+  "Operational Control": {
+    image: "assets/operational-control.webp?v=20260716-2",
+    alt: "Operational Control dimension overview: real-time monitoring, coordination and risk control"
+  },
   "Regional Analytics": {
-    image: "assets/regional-analytics.webp?v=20260716",
+    image: "assets/regional-analytics.webp?v=20260716-2",
     alt: "Regional Analytics dimension overview: terminal comparison, risk maps and global trends"
   }
 };
@@ -410,6 +422,9 @@ const executiveNetworkDrawer = document.querySelector("#executive-network-drawer
 const executivePlateViewer = document.querySelector("#executive-plate-viewer");
 const executivePlateTitle = document.querySelector("#executive-plate-title");
 const executivePlateImage = document.querySelector("#executive-plate-image");
+const executivePlateKicker = document.querySelector("#executive-plate-kicker");
+const executivePlateClose = document.querySelector("#executive-plate-close");
+const executiveEcosystemHotspots = document.querySelector("#executive-ecosystem-hotspots");
 const executivePilotStatus = document.querySelector("#executive-pilot-status");
 
 let activeIndex = -1;
@@ -420,6 +435,8 @@ let activeExecutiveCaseStep = 0;
 let navMode = "dimensions";
 let isRouting = false;
 let executivePlateTrigger = null;
+let activeExecutivePlate = null;
+let executivePlateHistory = [];
 let selectedLoginUser = "operario";
 
 const loginUsers = {
@@ -827,14 +844,43 @@ function setExecutiveLoopStage(index) {
   }
 }
 
+function positionExecutiveEcosystemHotspots() {
+  if (!executiveEcosystemHotspots || !executivePlateImage?.naturalWidth) return;
+  const media = executivePlateImage.parentElement;
+  const mediaRect = media.getBoundingClientRect();
+  const imageRatio = executivePlateImage.naturalWidth / executivePlateImage.naturalHeight;
+  const mediaRatio = mediaRect.width / mediaRect.height;
+  const width = mediaRatio > imageRatio ? mediaRect.height * imageRatio : mediaRect.width;
+  const height = mediaRatio > imageRatio ? mediaRect.height : mediaRect.width / imageRatio;
+  executiveEcosystemHotspots.style.left = `${(mediaRect.width - width) / 2}px`;
+  executiveEcosystemHotspots.style.top = `${(mediaRect.height - height) / 2}px`;
+  executiveEcosystemHotspots.style.width = `${width}px`;
+  executiveEcosystemHotspots.style.height = `${height}px`;
+}
+
+function renderExecutivePlate(name) {
+  const plate = executiveDimensionPlates[name];
+  if (!plate || !executivePlateViewer || !executivePlateImage) return;
+  activeExecutivePlate = name;
+  if (executivePlateTitle) executivePlateTitle.textContent = name;
+  if (executivePlateKicker) executivePlateKicker.textContent = name === "ONEcosystem" ? "Select a POWERED BY dimension" : "HSSE Ecosystem dimension";
+  if (executivePlateClose) executivePlateClose.textContent = executivePlateHistory.length ? "Back" : "Close";
+  if (executiveEcosystemHotspots) executiveEcosystemHotspots.hidden = name !== "ONEcosystem";
+  executivePlateImage.src = plate.image;
+  executivePlateImage.alt = plate.alt;
+}
+
 function openExecutivePlate(name, trigger) {
   const plate = executiveDimensionPlates[name];
   if (!plate || !executivePlateViewer || !executivePlateImage) return;
 
-  executivePlateTrigger = trigger || document.activeElement;
-  if (executivePlateTitle) executivePlateTitle.textContent = name;
-  executivePlateImage.src = plate.image;
-  executivePlateImage.alt = plate.alt;
+  if (!executivePlateViewer.open) {
+    executivePlateTrigger = trigger || document.activeElement;
+    executivePlateHistory = [];
+  } else if (activeExecutivePlate && activeExecutivePlate !== name) {
+    executivePlateHistory.push(activeExecutivePlate);
+  }
+  renderExecutivePlate(name);
 
   if (typeof executivePlateViewer.showModal === "function") {
     if (!executivePlateViewer.open) executivePlateViewer.showModal();
@@ -845,6 +891,10 @@ function openExecutivePlate(name, trigger) {
 
 function closeExecutivePlate() {
   if (!executivePlateViewer) return;
+  if (executivePlateHistory.length) {
+    renderExecutivePlate(executivePlateHistory.pop());
+    return;
+  }
   if (typeof executivePlateViewer.close === "function" && executivePlateViewer.open) {
     executivePlateViewer.close();
   } else {
@@ -852,7 +902,11 @@ function closeExecutivePlate() {
   }
   executivePlateTrigger?.focus?.();
   executivePlateTrigger = null;
+  activeExecutivePlate = null;
 }
+
+executivePlateImage?.addEventListener("load", positionExecutiveEcosystemHotspots);
+window.addEventListener("resize", positionExecutiveEcosystemHotspots);
 
 function setExecutiveCaseStep(index) {
   const step = executiveCaseSteps[index];

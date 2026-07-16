@@ -332,13 +332,22 @@
               <div class="executive-plate-shell">
                 <header>
                   <div>
-                    <span>HSSE Ecosystem dimension</span>
+                    <span id="executive-plate-kicker">HSSE Ecosystem dimension</span>
                     <h2 id="executive-plate-title">Culture</h2>
                   </div>
-                  <button type="button" data-action="exec-close-plate">Close</button>
+                  <button type="button" id="executive-plate-close" data-action="exec-close-plate">Close</button>
                 </header>
                 <div class="executive-plate-media">
                   <img id="executive-plate-image" src="assets/culture.webp" alt="Culture dimension overview" />
+                  <div class="executive-ecosystem-hotspots" id="executive-ecosystem-hotspots" aria-label="Select a POWERED BY dimension" hidden>
+                    <button type="button" style="--hotspot-x: 0.8%; --hotspot-width: 10.6%" data-exec-plate="Culture" aria-label="Open Culture dimension" title="Culture"></button>
+                    <button type="button" style="--hotspot-x: 11.5%; --hotspot-width: 10.7%" data-exec-plate="Prevent" aria-label="Open Prevent dimension" title="Prevent"></button>
+                    <button type="button" style="--hotspot-x: 22.3%; --hotspot-width: 10.7%" data-exec-plate="Intelligence" aria-label="Open Intelligence dimension" title="Intelligence"></button>
+                    <button type="button" style="--hotspot-x: 43.9%; --hotspot-width: 10.7%" data-exec-plate="Knowledge" aria-label="Open Knowledge dimension" title="Knowledge"></button>
+                    <button type="button" style="--hotspot-x: 54.8%; --hotspot-width: 10.6%" data-exec-plate="Advisor" aria-label="Open Advisor dimension" title="Advisor"></button>
+                    <button type="button" style="--hotspot-x: 76.7%; --hotspot-width: 10.8%" data-exec-plate="Operational Control" aria-label="Open Operational Control dimension" title="Operational Control"></button>
+                    <button type="button" style="--hotspot-x: 87.6%; --hotspot-width: 11.4%" data-exec-plate="Regional Analytics" aria-label="Open Regional Analytics dimension" title="Regional Analytics"></button>
+                  </div>
                 </div>
               </div>
             </dialog>
@@ -782,6 +791,6 @@
     <script>
       if (!window.location.hash) window.location.hash = "executive-americas";
     </script>
-    <script src="script.js?v=20260716-5"></script>
+    <script src="script.js?v=20260716-6"></script>
   </body>
 </html>
