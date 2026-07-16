@@ -566,7 +566,21 @@ const lessons = {
   }
 };
 
+const operatorSteps = [
+  { id: "hero", title: "Pantalla de inicio (Hero)" },
+  { id: "modules", title: "Catálogo de módulos" },
+  { id: "overview", title: "Página de módulo · Vista general" },
+  { id: "simulator", title: "Simulador 3D" },
+  { id: "microlearning", title: "Microlearning · Contenido" },
+  { id: "evaluation", title: "Trivia y evaluación" },
+  { id: "resources", title: "Recursos del módulo" },
+  { id: "certificate", title: "Certificado" },
+  { id: "progress", title: "Dashboard y progreso" },
+  { id: "profile", title: "Perfil y ruta por rol" }
+];
+
 let missionStep = 0;
+let activeOperatorStep = 0;
 
 function getDimension(id) {
   return dimensions.find((item) => item.id === id);
@@ -672,6 +686,7 @@ function openAcademy() {
   app.style.setProperty("--accent", "#ff5a12");
   setScenes("academy");
   setActiveNav("");
+  setOperatorTab("hero");
   document.title = "Mi Academia HSSE | Trinca y Destrinca";
   if (!isRouting) {
     history.replaceState(null, "", "#academy");
@@ -1012,6 +1027,9 @@ function handleAction(action) {
   if (action === "next-role") stepRole(1);
   if (action === "previous-role") stepRole(-1);
   if (action === "complete-mission") completeMissionStep();
+  if (action === "operator-next") stepOperator(1);
+  if (action === "operator-previous") stepOperator(-1);
+  if (action === "certificate-demo") verifyCertificate();
   if (action === "exec-next") stepExecutive(1);
   if (action === "exec-previous") stepExecutive(-1);
   if (action === "exec-restart") showExecutive();
@@ -1081,14 +1099,51 @@ function updateCopilot(promptId) {
 function setOperatorTab(tabId) {
   const targetPanel = document.querySelector(`[data-operator-panel="${tabId}"]`);
   if (!targetPanel) return;
+  const nextIndex = operatorSteps.findIndex((step) => step.id === tabId);
+  if (nextIndex < 0) return;
+  activeOperatorStep = nextIndex;
 
   document.querySelectorAll("[data-operator-tab]").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.operatorTab === tabId);
+    button.setAttribute("aria-current", button.dataset.operatorTab === tabId ? "step" : "false");
   });
 
   document.querySelectorAll("[data-operator-panel]").forEach((panel) => {
     panel.classList.toggle("is-active", panel.dataset.operatorPanel === tabId);
   });
+
+  const title = document.querySelector("#operator-step-title");
+  const current = document.querySelector("#operator-step-current");
+  const previous = document.querySelector('[data-action="operator-previous"]');
+  const next = document.querySelector('[data-action="operator-next"]');
+  if (title) title.textContent = operatorSteps[nextIndex].title;
+  if (current) current.textContent = String(nextIndex + 1).padStart(2, "0");
+  if (previous) previous.disabled = nextIndex === 0;
+  if (next) {
+    next.disabled = nextIndex === operatorSteps.length - 1;
+    next.textContent = nextIndex === operatorSteps.length - 1 ? "Recorrido completo" : "Siguiente →";
+  }
+
+  const dots = document.querySelector("#operator-flow-dots");
+  if (dots) {
+    dots.innerHTML = operatorSteps
+      .map(
+        (step, index) =>
+          `<button type="button" class="${index === nextIndex ? "is-active" : ""}" data-operator-tab="${step.id}" aria-label="Abrir paso ${index + 1}: ${step.title}"></button>`
+      )
+      .join("");
+  }
+}
+
+function stepOperator(delta) {
+  const nextIndex = Math.max(0, Math.min(operatorSteps.length - 1, activeOperatorStep + delta));
+  setOperatorTab(operatorSteps[nextIndex].id);
+}
+
+function verifyCertificate() {
+  const status = document.querySelector("#certificate-status");
+  if (!status) return;
+  status.textContent = "Credencial validada · ID HSSE-CAL-0726-184";
 }
 
 function setTrainingModule(moduleId) {
@@ -1108,6 +1163,8 @@ function setTrainingModule(moduleId) {
   const lessonHeading = document.querySelector("#lesson-heading");
   const lessonCopy = document.querySelector("#lesson-copy");
   const lessonImage = document.querySelector("#lesson-image");
+  const overviewTitle = document.querySelector("#overview-title");
+  const overviewImage = document.querySelector("#overview-image");
 
   if (simulatorImage) simulatorImage.src = module.image;
   if (simulatorTitle) simulatorTitle.textContent = module.title;
@@ -1118,6 +1175,8 @@ function setTrainingModule(moduleId) {
   if (lessonHeading) lessonHeading.textContent = module.lesson;
   if (lessonCopy) lessonCopy.textContent = module.copy;
   if (lessonImage) lessonImage.src = module.image;
+  if (overviewTitle) overviewTitle.textContent = module.title;
+  if (overviewImage) overviewImage.src = module.image;
 
   missionStep = 0;
   updateMissionStep();
@@ -1232,7 +1291,7 @@ document.addEventListener("click", (event) => {
   const moduleTarget = event.target.closest("[data-training-module]");
   if (moduleTarget) {
     setTrainingModule(moduleTarget.dataset.trainingModule);
-    setOperatorTab("simulator");
+    setOperatorTab("overview");
     return;
   }
 
@@ -1310,6 +1369,19 @@ document.addEventListener("keydown", (event) => {
       stepExecutive(-1);
     }
     return;
+  }
+
+  if (app.dataset.view === "academy") {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      stepOperator(1);
+      return;
+    }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      stepOperator(-1);
+      return;
+    }
   }
 
   if (event.key === "Escape") {

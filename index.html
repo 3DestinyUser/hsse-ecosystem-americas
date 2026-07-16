@@ -532,13 +532,17 @@
                   </div>
                 </div>
 
-                <nav class="operator-tabs" aria-label="Secciones de la app">
-                  <button type="button" class="is-active" data-operator-tab="dashboard">Inicio</button>
-                  <button type="button" data-operator-tab="modules">Módulos</button>
-                  <button type="button" data-operator-tab="simulator">Simulador</button>
-                  <button type="button" data-operator-tab="microlearning">Microlearning</button>
-                  <button type="button" data-operator-tab="evaluation">Trivia</button>
-                  <button type="button" data-operator-tab="resources">Recursos</button>
+                <nav class="operator-tabs" aria-label="Recorrido de entrenamiento">
+                  <button type="button" class="is-active" data-operator-tab="hero"><span>01</span>Inicio</button>
+                  <button type="button" data-operator-tab="modules"><span>02</span>Catálogo</button>
+                  <button type="button" data-operator-tab="overview"><span>03</span>Vista del módulo</button>
+                  <button type="button" data-operator-tab="simulator"><span>04</span>Simulador 3D</button>
+                  <button type="button" data-operator-tab="microlearning"><span>05</span>Microlearning</button>
+                  <button type="button" data-operator-tab="evaluation"><span>06</span>Evaluación</button>
+                  <button type="button" data-operator-tab="resources"><span>07</span>Recursos</button>
+                  <button type="button" data-operator-tab="certificate"><span>08</span>Certificado</button>
+                  <button type="button" data-operator-tab="progress"><span>09</span>Progreso</button>
+                  <button type="button" data-operator-tab="profile"><span>10</span>Perfil y ruta</button>
                 </nav>
 
                 <div class="operator-score">
@@ -549,7 +553,15 @@
               </aside>
 
               <div class="operator-stage">
-                <section class="operator-panel is-active" data-operator-panel="dashboard">
+                <header class="operator-stage-header">
+                  <div>
+                    <span>Experiencia guiada del Operario</span>
+                    <strong id="operator-step-title">Pantalla de inicio</strong>
+                  </div>
+                  <div class="operator-step-count"><strong id="operator-step-current">01</strong><span>/ 10</span></div>
+                </header>
+
+                <section class="operator-panel is-active" data-operator-panel="hero">
                   <div class="training-hero-card">
                     <img src="assets/lashing-cover.webp" alt="Portada del módulo Trinca y Destrinca" />
                     <div>
@@ -560,8 +572,8 @@
                         comunicación y liberación segura antes de subir al buque.
                       </p>
                       <div class="hero-actions">
-                        <button type="button" class="primary-action" data-operator-tab="simulator">
-                          Continuar misión
+                        <button type="button" class="primary-action" data-operator-tab="modules">
+                          Explorar mi ruta
                         </button>
                         <button type="button" class="secondary-action" data-operator-tab="modules">
                           Ver módulos
@@ -608,6 +620,42 @@
                       <strong>Protección ocular</strong>
                       <small>Casco con barbijo</small>
                     </button>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="overview">
+                  <div class="module-overview">
+                    <div class="module-overview-copy">
+                      <button type="button" class="text-action" data-operator-tab="modules">Volver al catálogo</button>
+                      <p class="eyebrow">Fatal 5 · Nivel avanzado</p>
+                      <h3 id="overview-title">Trinca y Destrinca</h3>
+                      <p id="overview-copy">
+                        Aprende a asegurar y liberar contenedores de manera segura, evitando exposición a
+                        cargas suspendidas, liberación brusca, atrapamientos y sobreesfuerzo.
+                      </p>
+                      <div class="module-facts">
+                        <article><span>Duración</span><strong>90 min</strong></article>
+                        <article><span>Nivel</span><strong>Avanzado</strong></article>
+                        <article><span>Estado</span><strong>En progreso · 78%</strong></article>
+                      </div>
+                      <div class="module-topics">
+                        <span>Temas clave</span>
+                        <ul>
+                          <li>Tipos de barras, tensores y twistlocks.</li>
+                          <li>Postura, línea de fuego y energía acumulada.</li>
+                          <li>Comunicación y coordinación entre compañeros.</li>
+                          <li>Condiciones de lluvia, noche y movimiento del buque.</li>
+                        </ul>
+                      </div>
+                      <div class="hero-actions">
+                        <button type="button" class="primary-action" data-operator-tab="simulator">Iniciar simulador 3D</button>
+                        <button type="button" class="secondary-action" data-operator-tab="microlearning">Ver microlearning</button>
+                      </div>
+                    </div>
+                    <div class="module-overview-media">
+                      <img id="overview-image" src="assets/lashing-prologue.webp" alt="Operarios realizando trinca y destrinca" />
+                      <div><span>Competencia objetivo</span><strong>Ejecutar la secuencia sin exposición a Fatal 5.</strong></div>
+                    </div>
                   </div>
                 </section>
 
@@ -681,22 +729,115 @@
                       <img src="assets/lashing-eye-protection.webp" alt="" />
                       <span>Guía visual</span>
                       <strong>Protección ocular y barbijo</strong>
-                      <button type="button">Abrir</button>
+                      <button type="button" data-operator-tab="microlearning">Abrir guía</button>
                     </article>
                     <article>
                       <img src="assets/lashing-turnbuckle.webp" alt="" />
                       <span>Checklist</span>
                       <strong>Atrapamientos en tensores</strong>
-                      <button type="button">Abrir</button>
+                      <button type="button" data-operator-tab="microlearning">Abrir checklist</button>
                     </article>
                     <article>
                       <img src="assets/operator-training-board.webp" alt="" />
                       <span>Dashboard</span>
                       <strong>Progreso y certificación</strong>
-                      <button type="button">Abrir</button>
+                      <button type="button" data-operator-tab="progress">Ver progreso</button>
                     </article>
                   </div>
                 </section>
+
+                <section class="operator-panel" data-operator-panel="certificate">
+                  <div class="certificate-workspace">
+                    <article class="certificate-sheet" aria-label="Certificado de finalización">
+                      <div class="certificate-brand"><span class="brand-mark" aria-hidden="true"></span><strong>APM TERMINALS</strong></div>
+                      <p>HSSE ACADEMY</p>
+                      <h3>Certificado de<br />Finalización</h3>
+                      <span>Se otorga a</span>
+                      <strong class="certificate-name">Carlos Medina</strong>
+                      <p>por completar satisfactoriamente el módulo</p>
+                      <h4>Trinca y Destrinca Segura</h4>
+                      <div class="certificate-data">
+                        <span>Nivel<strong>Avanzado</strong></span>
+                        <span>Duración<strong>90 minutos</strong></span>
+                        <span>Puntuación<strong>950 / 1000</strong></span>
+                      </div>
+                      <div class="certificate-seal" aria-hidden="true">★</div>
+                      <small>Todos los días. Todas las personas. Cero daño.</small>
+                    </article>
+                    <aside class="certificate-summary">
+                      <p class="eyebrow">Credencial verificable</p>
+                      <h3>Competencia acreditada</h3>
+                      <p>La certificación se activa al completar práctica, contenidos, evaluación y evidencia de competencia.</p>
+                      <ul>
+                        <li>Vigencia y renovación visibles.</li>
+                        <li>Asociada al rol y a la terminal.</li>
+                        <li>Disponible para supervisor y HSSE.</li>
+                      </ul>
+                      <button type="button" class="primary-action" data-action="certificate-demo">Verificar credencial</button>
+                      <p class="certificate-status" id="certificate-status">Lista para validación.</p>
+                    </aside>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="progress">
+                  <div class="progress-dashboard">
+                    <header>
+                      <div><p class="eyebrow">Mi desempeño</p><h3>Dashboard de progreso</h3></div>
+                      <span class="progress-period">Últimos 30 días</span>
+                    </header>
+                    <div class="progress-kpis">
+                      <article><span>Módulos completados</span><strong>6 / 10</strong><small>60% de la ruta</small></article>
+                      <article><span>Horas de entrenamiento</span><strong>8.5 h</strong><small>+2.1 h este mes</small></article>
+                      <article><span>Puntuación media</span><strong>870</strong><small>Sobre 1,000 pts</small></article>
+                      <article><span>Certificados</span><strong>3</strong><small>1 por renovar</small></article>
+                    </div>
+                    <div class="progress-grid">
+                      <section class="learning-progress">
+                        <h4>Mi ruta obligatoria</h4>
+                        <article><div><strong>Trinca y Destrinca</strong><span>Avanzado</span></div><progress value="78" max="100">78%</progress><b>78%</b></article>
+                        <article><div><strong>Cargas Suspendidas</strong><span>Crítico</span></div><progress value="100" max="100">100%</progress><b>100%</b></article>
+                        <article><div><strong>Trabajo en Jaula</strong><span>Crítico</span></div><progress value="45" max="100">45%</progress><b>45%</b></article>
+                        <article><div><strong>Inspección de Pasarela</strong><span>Intermedio</span></div><progress value="62" max="100">62%</progress><b>62%</b></article>
+                      </section>
+                      <aside class="activity-stream">
+                        <h4>Actividad reciente</h4>
+                        <article><span>✓</span><div><strong>Microlearning completado</strong><small>Técnica correcta de destrincado</small></div></article>
+                        <article><span>+230</span><div><strong>Trivia aprobada</strong><small>Riesgos por liberación brusca</small></div></article>
+                        <article><span>AI</span><div><strong>Ruta adaptada</strong><small>Refuerzo asignado: atrapamientos</small></div></article>
+                      </aside>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="profile">
+                  <div class="role-profile-view">
+                    <section>
+                      <div class="profile-identity"><div class="avatar-orb">CM</div><div><span>Operario habilitado</span><h3>Carlos Medina</h3><p>Trinca y Destrinca · Turno B · Callao</p></div></div>
+                      <div class="profile-readiness"><strong>82%</strong><span>Preparación para el rol</span><progress value="82" max="100">82%</progress></div>
+                      <div class="role-permissions">
+                        <article><span>Rol</span><strong>Lashing Operator</strong></article>
+                        <article><span>Supervisor</span><strong>María Torres</strong></article>
+                        <article><span>Próxima renovación</span><strong>18 Sep 2026</strong></article>
+                      </div>
+                    </section>
+                    <aside>
+                      <p class="eyebrow">Academia inteligente por rol</p>
+                      <h3>Solo lo que aplica a tu trabajo.</h3>
+                      <div class="role-route">
+                        <article class="is-done"><span>01</span><div><strong>Inducción</strong><small>Transportes · Pasarela</small></div></article>
+                        <article class="is-done"><span>02</span><div><strong>Riesgos Fatales</strong><small>Cargas suspendidas · Incendios</small></div></article>
+                        <article class="is-current"><span>03</span><div><strong>Especialización</strong><small>Trinca y Destrinca · Trabajo en Jaula</small></div></article>
+                        <article><span>04</span><div><strong>Según función</strong><small>Altura · LOTO · Contratistas</small></div></article>
+                      </div>
+                    </aside>
+                  </div>
+                </section>
+
+                <footer class="operator-flow-controls">
+                  <button type="button" data-action="operator-previous" aria-label="Pantalla anterior">← Anterior</button>
+                  <div class="operator-flow-dots" id="operator-flow-dots" aria-label="Progreso del recorrido"></div>
+                  <button type="button" data-action="operator-next">Siguiente →</button>
+                </footer>
               </div>
             </section>
           </div>
@@ -791,6 +932,6 @@
     <script>
       if (!window.location.hash) window.location.hash = "executive-americas";
     </script>
-    <script src="script.js?v=20260716-6"></script>
+    <script src="script.js?v=20260716-7"></script>
   </body>
 </html>
