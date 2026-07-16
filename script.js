@@ -300,19 +300,19 @@ const executiveLoopStages = [
 
 const executiveDimensionPlates = {
   Culture: {
-    image: "assets/culture.webp",
+    image: "assets/culture.webp?v=20260716",
     alt: "Culture dimension overview: behaviors, values and human safety culture"
   },
   Prevent: {
-    image: "assets/prevent.webp",
+    image: "assets/prevent.webp?v=20260716",
     alt: "Prevent dimension overview: anticipation, signals and preventive action"
   },
   Intelligence: {
-    image: "assets/intelligence.webp",
+    image: "assets/intelligence.webp?v=20260716",
     alt: "Intelligence dimension overview: connected data, analytics, models and prediction"
   },
   "Regional Analytics": {
-    image: "assets/regional-analytics.webp",
+    image: "assets/regional-analytics.webp?v=20260716",
     alt: "Regional Analytics dimension overview: terminal comparison, risk maps and global trends"
   }
 };
