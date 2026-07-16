@@ -298,6 +298,17 @@ const executiveLoopStages = [
   }
 ];
 
+const executiveDimensionPlates = {
+  Culture: {
+    image: "assets/culture.webp",
+    alt: "Culture dimension overview: behaviors, values and human safety culture"
+  },
+  Prevent: {
+    image: "assets/prevent.webp",
+    alt: "Prevent dimension overview: anticipation, signals and preventive action"
+  }
+};
+
 const executiveCaseSteps = [
   {
     label: "Moment 01 · Signal",
@@ -384,6 +395,9 @@ const executiveNotes = document.querySelector("#executive-notes");
 const executiveNoteCopy = document.querySelector("#executive-note-copy");
 const executiveDimensionDrawer = document.querySelector("#executive-dimension-drawer");
 const executiveNetworkDrawer = document.querySelector("#executive-network-drawer");
+const executivePlateViewer = document.querySelector("#executive-plate-viewer");
+const executivePlateTitle = document.querySelector("#executive-plate-title");
+const executivePlateImage = document.querySelector("#executive-plate-image");
 const executivePilotStatus = document.querySelector("#executive-pilot-status");
 
 let activeIndex = -1;
@@ -393,6 +407,7 @@ let activeExecutiveLoopStage = 0;
 let activeExecutiveCaseStep = 0;
 let navMode = "dimensions";
 let isRouting = false;
+let executivePlateTrigger = null;
 let selectedLoginUser = "operario";
 
 const loginUsers = {
@@ -790,8 +805,41 @@ function setExecutiveLoopStage(index) {
   if (executiveLoopTitle) executiveLoopTitle.textContent = stage.title;
   if (executiveLoopCopy) executiveLoopCopy.textContent = stage.copy;
   if (executiveLoopDimensions) {
-    executiveLoopDimensions.innerHTML = stage.dimensions.map((dimension) => `<strong>${dimension}</strong>`).join("");
+    executiveLoopDimensions.innerHTML = stage.dimensions
+      .map((dimension) =>
+        executiveDimensionPlates[dimension]
+          ? `<button type="button" data-exec-plate="${dimension}" aria-label="Open ${dimension} dimension overview">${dimension}</button>`
+          : `<strong>${dimension}</strong>`
+      )
+      .join("");
   }
+}
+
+function openExecutivePlate(name, trigger) {
+  const plate = executiveDimensionPlates[name];
+  if (!plate || !executivePlateViewer || !executivePlateImage) return;
+
+  executivePlateTrigger = trigger || document.activeElement;
+  if (executivePlateTitle) executivePlateTitle.textContent = name;
+  executivePlateImage.src = plate.image;
+  executivePlateImage.alt = plate.alt;
+
+  if (typeof executivePlateViewer.showModal === "function") {
+    if (!executivePlateViewer.open) executivePlateViewer.showModal();
+  } else {
+    executivePlateViewer.setAttribute("open", "");
+  }
+}
+
+function closeExecutivePlate() {
+  if (!executivePlateViewer) return;
+  if (typeof executivePlateViewer.close === "function" && executivePlateViewer.open) {
+    executivePlateViewer.close();
+  } else {
+    executivePlateViewer.removeAttribute("open");
+  }
+  executivePlateTrigger?.focus?.();
+  executivePlateTrigger = null;
 }
 
 function setExecutiveCaseStep(index) {
@@ -909,6 +957,7 @@ function handleAction(action) {
   if (action === "exec-close-dimensions") toggleExecutiveDimensionDrawer(false);
   if (action === "exec-network") toggleExecutiveNetworkDrawer(true);
   if (action === "exec-close-network") toggleExecutiveNetworkDrawer(false);
+  if (action === "exec-close-plate") closeExecutivePlate();
   if (action === "exec-pilot") confirmExecutivePilot();
 }
 
@@ -1067,9 +1116,20 @@ function answerQuiz(result, button) {
 }
 
 document.addEventListener("click", (event) => {
+  if (event.target === executivePlateViewer) {
+    closeExecutivePlate();
+    return;
+  }
+
   const actionTarget = event.target.closest("[data-action]");
   if (actionTarget) {
     handleAction(actionTarget.dataset.action);
+    return;
+  }
+
+  const executivePlateTarget = event.target.closest("[data-exec-plate]");
+  if (executivePlateTarget) {
+    openExecutivePlate(executivePlateTarget.dataset.execPlate, executivePlateTarget);
     return;
   }
 
@@ -1148,6 +1208,14 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (app.dataset.view === "executive") {
+    if (executivePlateViewer?.open) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeExecutivePlate();
+      }
+      return;
+    }
+
     if (event.key === "Escape") {
       if (executiveNetworkDrawer && !executiveNetworkDrawer.hidden) {
         toggleExecutiveNetworkDrawer(false);

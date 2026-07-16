@@ -186,7 +186,8 @@
                       Make safe behavior visible and capture early risk signals before exposure escalates.
                     </p>
                     <div id="executive-loop-dimensions" class="executive-dimension-line">
-                      <strong>Culture</strong><strong>Prevent</strong>
+                      <button type="button" data-exec-plate="Culture">Culture</button>
+                      <button type="button" data-exec-plate="Prevent">Prevent</button>
                     </div>
                   </div>
                 </div>
@@ -325,6 +326,21 @@
               <span>Presenter note</span>
               <p id="executive-note-copy"></p>
             </aside>
+
+            <dialog class="executive-plate-viewer" id="executive-plate-viewer" aria-labelledby="executive-plate-title">
+              <div class="executive-plate-shell">
+                <header>
+                  <div>
+                    <span>HSSE Ecosystem dimension</span>
+                    <h2 id="executive-plate-title">Culture</h2>
+                  </div>
+                  <button type="button" data-action="exec-close-plate">Close</button>
+                </header>
+                <div class="executive-plate-media">
+                  <img id="executive-plate-image" src="assets/culture.webp" alt="Culture dimension overview" />
+                </div>
+              </div>
+            </dialog>
 
             <aside class="executive-dimension-drawer" id="executive-dimension-drawer" hidden>
               <header>
