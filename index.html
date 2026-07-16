@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HSSE Human Safety Ecosystem</title>
+    <meta
+      name="description"
+      content="Prototipo explicativo del ecosistema HSSE de APM Terminals con sus nueve dimensiones."
+    />
+    <link rel="preload" href="assets/hub.webp" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app" data-view="login">
+      <header class="topbar" aria-label="Navegación principal">
+        <button class="brand-lockup" type="button" data-action="home" aria-label="Volver al hub">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>APM TERMINALS</strong>
+            <small>HSSE Ecosystem</small>
+          </span>
+        </button>
+
+        <div class="view-toggle" aria-label="Modo de exploración">
+          <button type="button" data-action="dimensions-mode">Dimensiones</button>
+          <button type="button" data-action="roles-mode">Roles</button>
+        </div>
+
+        <nav class="dimension-nav" aria-label="Exploración del ecosistema" data-primary-nav></nav>
+      </header>
+
+      <main>
+        <section class="scene login-scene is-active" id="login" aria-labelledby="login-title">
+          <div class="login-visual" aria-hidden="true">
+            <img src="assets/hub.webp" alt="" />
+          </div>
+
+          <article class="login-panel">
+            <p class="eyebrow">Acceso unificado HSSE</p>
+            <h1 id="login-title">Face ID para entrar a tu operación.</h1>
+            <p>
+              El sistema reconoce tu perfil y abre únicamente la experiencia que corresponde a tu rol.
+            </p>
+
+            <div class="identity-card">
+              <div class="face-id" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+                <i></i>
+              </div>
+              <div>
+                <strong id="login-user-name">Carlos Medina</strong>
+                <small id="login-user-role">Operario de Trinca y Destrinca · Terminal Callao · Turno B</small>
+              </div>
+            </div>
+
+            <div class="login-users" aria-label="Usuarios demo">
+              <button type="button" class="is-active" data-login-user="operario">Operario</button>
+              <button type="button" data-login-user="supervisor">Supervisor</button>
+              <button type="button" data-login-user="hsse-local">Jefe HSSE</button>
+            </div>
+
+            <button class="biometric-action" type="button" data-action="scan-login">
+              Iniciar Face ID
+            </button>
+            <p class="login-status" id="login-status">Listo para validar identidad.</p>
+
+            <div class="executive-entry">
+              <span>Presentación ejecutiva en inglés</span>
+              <button type="button" data-action="open-executive">Open Americas Executive Demo</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="scene hub-scene is-active" id="hub" aria-labelledby="hub-title">
+          <h1 class="sr-only" id="hub-title">HSSE Human Safety Ecosystem</h1>
+          <img class="hub-image" src="assets/hub.webp" alt="Hub inicial del ecosistema HSSE" />
+
+          <div class="hub-actions" aria-label="Acciones del hub">
+            <p>Un ecosistema. Nueve dimensiones. Propósito: <strong>Cero Daño.</strong></p>
+            <div class="hub-action-buttons">
+              <button class="primary-action" type="button" data-action="start">
+                Explorar dimensiones
+              </button>
+              <button class="secondary-action" type="button" data-action="roles-mode">
+                Explorar por rol
+              </button>
+              <button class="secondary-action" type="button" data-action="open-executive">
+                Executive Americas Demo
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="scene executive-scene"
+          id="executive-americas"
+          aria-label="HSSE Ecosystem executive briefing for Americas"
+          hidden
+        >
+          <div class="executive-deck">
+            <header class="executive-header">
+              <div class="executive-brand" aria-label="APM Terminals HSSE Ecosystem">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>
+                  <strong>APM TERMINALS</strong>
+                  <small>HSSE Ecosystem</small>
+                </span>
+              </div>
+
+              <div class="executive-progress" aria-live="polite">
+                <span id="executive-progress-label">01 / 05</span>
+                <i><b id="executive-progress-bar"></b></i>
+              </div>
+
+              <div class="executive-utilities">
+                <button type="button" data-action="exec-notes" aria-expanded="false">Presenter notes</button>
+                <button type="button" data-action="exec-restart">Restart</button>
+                <button type="button" data-action="exec-exit">Exit</button>
+              </div>
+            </header>
+
+            <div class="executive-slides">
+              <article class="executive-slide executive-opening is-active" data-executive-slide="0">
+                <div class="executive-opening-media" aria-hidden="true">
+                  <img src="assets/hub.webp" alt="" />
+                </div>
+                <div class="executive-opening-shade" aria-hidden="true"></div>
+
+                <div class="executive-opening-copy">
+                  <p class="executive-kicker">Americas executive briefing</p>
+                  <h1>HSSE Ecosystem</h1>
+                  <p class="executive-lead">From frontline signal to regional standard.</p>
+                  <p class="executive-promise">
+                    One ecosystem. Nine dimensions. One outcome: <strong>Zero Harm.</strong>
+                  </p>
+                  <button class="executive-primary" type="button" data-action="exec-next">
+                    Begin executive brief
+                  </button>
+                </div>
+
+                <div class="executive-prepared">
+                  <span>Prepared for</span>
+                  <strong>Sean Frost</strong>
+                  <small>SNR Regional HSSE Business Partner, Americas</small>
+                </div>
+              </article>
+
+              <article class="executive-slide executive-system" data-executive-slide="1">
+                <div class="executive-section-heading">
+                  <p class="executive-kicker">How the ecosystem works</p>
+                  <h2>Nine dimensions. One connected operating loop.</h2>
+                  <p>Each capability turns risk information into safer action and reusable learning.</p>
+                </div>
+
+                <div class="executive-loop-layout">
+                  <div class="executive-loop-map" aria-label="Six-stage HSSE operating loop">
+                    <button class="executive-loop-node is-active" type="button" data-exec-stage="0">
+                      <span>01</span><strong>Observe</strong><small>Culture + Prevent</small>
+                    </button>
+                    <button class="executive-loop-node" type="button" data-exec-stage="1">
+                      <span>02</span><strong>Understand</strong><small>Intelligence</small>
+                    </button>
+                    <button class="executive-loop-node" type="button" data-exec-stage="2">
+                      <span>03</span><strong>Prepare</strong><small>Training + Immersive Learning</small>
+                    </button>
+                    <button class="executive-loop-node" type="button" data-exec-stage="3">
+                      <span>04</span><strong>Guide</strong><small>Knowledge + Advisor</small>
+                    </button>
+                    <button class="executive-loop-node" type="button" data-exec-stage="4">
+                      <span>05</span><strong>Control</strong><small>Operational Control</small>
+                    </button>
+                    <button class="executive-loop-node" type="button" data-exec-stage="5">
+                      <span>06</span><strong>Scale</strong><small>Regional Analytics</small>
+                    </button>
+                    <div class="executive-loop-center" aria-hidden="true">
+                      <span>Connected operating loop</span>
+                      <strong>Zero Harm</strong>
+                    </div>
+                  </div>
+
+                  <div class="executive-loop-readout" aria-live="polite">
+                    <span id="executive-loop-index">Stage 01</span>
+                    <h3 id="executive-loop-title">Observe</h3>
+                    <p id="executive-loop-copy">
+                      Make safe behavior visible and capture early risk signals before exposure escalates.
+                    </p>
+                    <div id="executive-loop-dimensions" class="executive-dimension-line">
+                      <strong>Culture</strong><strong>Prevent</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="executive-slide executive-risk" data-executive-slide="2">
+                <div class="executive-risk-media" aria-hidden="true">
+                  <img src="assets/lashing-cover.webp" alt="" />
+                </div>
+                <div class="executive-risk-shade" aria-hidden="true"></div>
+
+                <div class="executive-risk-copy">
+                  <p class="executive-kicker">One risk. One connected response.</p>
+                  <h2>Lashing operation: a critical signal becomes regional learning.</h2>
+                  <div class="executive-case-readout" aria-live="polite">
+                    <span id="executive-case-label">Moment 01 · Signal</span>
+                    <h3 id="executive-case-title">See exposure before an event.</h3>
+                    <p id="executive-case-copy">
+                      Prevent captures a line-of-fire observation while Operational Control identifies active exposure around the task.
+                    </p>
+                    <div id="executive-case-dimensions" class="executive-dimension-line executive-dimension-line-light">
+                      <strong>Prevent</strong><strong>Operational Control</strong>
+                    </div>
+                  </div>
+                  <button class="executive-secondary-light" type="button" data-action="exec-case-next">
+                    Advance response
+                  </button>
+                </div>
+
+                <div class="executive-response-track" aria-label="Connected response moments">
+                  <button class="is-active" type="button" data-exec-case="0"><span>01</span>Signal</button>
+                  <button type="button" data-exec-case="1"><span>02</span>Pattern</button>
+                  <button type="button" data-exec-case="2"><span>03</span>Capability</button>
+                  <button type="button" data-exec-case="3"><span>04</span>Learn &amp; scale</button>
+                </div>
+              </article>
+
+              <article class="executive-slide executive-cockpit" data-executive-slide="3">
+                <div class="executive-cockpit-heading">
+                  <div>
+                    <p class="executive-kicker">Regional HSSE Cockpit</p>
+                    <h2>Where regional insight becomes targeted support.</h2>
+                  </div>
+                  <div class="executive-cockpit-actions">
+                    <span class="executive-data-label">Illustrative prototype data</span>
+                    <button type="button" data-action="exec-network">View Americas network</button>
+                  </div>
+                </div>
+
+                <div class="executive-cockpit-workspace">
+                  <section class="executive-cockpit-main" aria-label="Americas regional indicators">
+                    <div class="executive-kpi-rail">
+                      <div><span>Critical-control effectiveness</span><strong>Watch</strong></div>
+                      <div><span>Action closure</span><strong>On track</strong></div>
+                      <div><span>Competence coverage</span><strong>Gap detected</strong></div>
+                      <div><span>Recurring-risk patterns</span><strong>3 clusters</strong></div>
+                    </div>
+
+                    <div class="executive-region-map" aria-label="Illustrative regional risk map">
+                      <div class="executive-map-image" aria-hidden="true"></div>
+                      <span class="executive-map-marker marker-one"><i></i>North America · 7</span>
+                      <span class="executive-map-marker marker-two is-priority"><i></i>Andean · 2</span>
+                      <span class="executive-map-marker marker-three"><i></i>Central America · 3</span>
+                      <span class="executive-map-marker marker-four"><i></i>Brazil &amp; Southern Cone · 5</span>
+                      <div class="executive-map-caption">
+                        <span>Americas footprint</span>
+                        <strong>15 operating terminals · 2 regional offices</strong>
+                      </div>
+                    </div>
+
+                    <div class="executive-terminal-lines" aria-label="Americas network summary">
+                      <div><strong>07</strong><span>North America locations</span><i class="status-good"></i></div>
+                      <div><strong>10</strong><span>Latin America locations</span><i class="status-good"></i></div>
+                      <button type="button" data-action="exec-network">
+                        <strong>17</strong><span>View all Americas locations</span><i></i>
+                      </button>
+                    </div>
+                  </section>
+
+                  <aside class="executive-copilot" aria-label="Regional HSSE AI Copilot">
+                    <div class="executive-copilot-title">
+                      <span class="executive-ai-mark" aria-hidden="true"></span>
+                      <div><small>Regional HSSE</small><strong>AI Copilot</strong></div>
+                    </div>
+                    <p>Ask for a prioritized, explainable intervention across the Americas portfolio.</p>
+                    <button type="button" data-action="exec-copilot">Where should we intervene first?</button>
+
+                    <div class="executive-copilot-answer" id="executive-copilot-answer" aria-live="polite">
+                      <span>Ready to analyze the connected ecosystem.</span>
+                    </div>
+                  </aside>
+                </div>
+              </article>
+
+              <article class="executive-slide executive-close" data-executive-slide="4">
+                <div class="executive-close-media" aria-hidden="true">
+                  <img src="assets/hub.webp" alt="" />
+                </div>
+                <div class="executive-close-shade" aria-hidden="true"></div>
+
+                <div class="executive-close-copy">
+                  <p class="executive-kicker">A focused next step</p>
+                  <h2>See earlier. Decide faster. Learn across terminals.</h2>
+                  <p>Validate the operating model through a 90-day Americas prototype pilot.</p>
+
+                  <div class="executive-pilot-steps">
+                    <div><span>01</span><strong>One initial use case</strong><small>Lashing operations</small></div>
+                    <div><span>02</span><strong>Two pilot terminals</strong><small>Contrasting operating contexts</small></div>
+                    <div><span>03</span><strong>Three success signals</strong><small>Earlier detection, control assurance, role competence</small></div>
+                  </div>
+
+                  <div class="executive-close-actions">
+                    <button class="executive-primary" type="button" data-action="exec-pilot">Discuss pilot scope</button>
+                    <button class="executive-link-light" type="button" data-action="exec-dimensions">
+                      Explore all 9 dimensions
+                    </button>
+                  </div>
+                  <p class="executive-pilot-status" id="executive-pilot-status" aria-live="polite"></p>
+                </div>
+              </article>
+            </div>
+
+            <nav class="executive-controls" aria-label="Executive briefing controls">
+              <button type="button" data-action="exec-previous" id="executive-previous">Back</button>
+              <div class="executive-dots" aria-label="Briefing progress">
+                <button class="is-active" type="button" data-exec-slide="0" aria-label="Opening"></button>
+                <button type="button" data-exec-slide="1" aria-label="Operating loop"></button>
+                <button type="button" data-exec-slide="2" aria-label="Connected response"></button>
+                <button type="button" data-exec-slide="3" aria-label="Regional cockpit"></button>
+                <button type="button" data-exec-slide="4" aria-label="Pilot proposal"></button>
+              </div>
+              <button type="button" data-action="exec-next" id="executive-next">Next</button>
+            </nav>
+
+            <aside class="executive-notes" id="executive-notes" hidden>
+              <span>Presenter note</span>
+              <p id="executive-note-copy"></p>
+            </aside>
+
+            <aside class="executive-dimension-drawer" id="executive-dimension-drawer" hidden>
+              <header>
+                <div>
+                  <span>Executive reference</span>
+                  <h2>All nine dimensions</h2>
+                </div>
+                <button type="button" data-action="exec-close-dimensions">Close</button>
+              </header>
+              <div class="executive-dimension-index">
+                <article><span>01</span><div><strong>Culture</strong><p>Turns values and behaviors into consistent safe choices.</p></div></article>
+                <article><span>02</span><div><strong>Prevent</strong><p>Captures early signals and closes hazards before exposure.</p></div></article>
+                <article><span>03</span><div><strong>Intelligence</strong><p>Transforms fragmented data into predictive risk signals.</p></div></article>
+                <article><span>04</span><div><strong>Training</strong><p>Assigns role-based learning and certifies critical competence.</p></div></article>
+                <article><span>05</span><div><strong>Knowledge</strong><p>Makes lessons, standards and cases available at the point of work.</p></div></article>
+                <article><span>06</span><div><strong>Advisor</strong><p>Converts connected signals into prioritized, explainable actions.</p></div></article>
+                <article><span>07</span><div><strong>Immersive Learning</strong><p>Builds decision memory through safe high-risk practice.</p></div></article>
+                <article><span>08</span><div><strong>Operational Control</strong><p>Coordinates live risks, alerts, people and work.</p></div></article>
+                <article><span>09</span><div><strong>Regional Analytics</strong><p>Benchmarks terminals and scales evidence-based interventions.</p></div></article>
+              </div>
+            </aside>
+
+            <aside
+              class="executive-dimension-drawer executive-network-drawer"
+              id="executive-network-drawer"
+              aria-label="APM Terminals Americas network"
+              hidden
+            >
+              <header>
+                <div>
+                  <span>APM Terminals Americas</span>
+                  <h2>17 locations. One regional network.</h2>
+                </div>
+                <button type="button" data-action="exec-close-network">Close</button>
+              </header>
+
+              <div class="executive-network-summary">
+                <div><strong>15</strong><span>Operating terminals</span></div>
+                <div><strong>02</strong><span>Regional offices</span></div>
+                <div><strong>02</strong><span>Subregions</span></div>
+              </div>
+
+              <div class="executive-network-tabs" aria-label="Filter Americas locations">
+                <button class="is-active" type="button" data-exec-region="all">All locations</button>
+                <button type="button" data-exec-region="north">North America</button>
+                <button type="button" data-exec-region="latin">Latin America</button>
+              </div>
+
+              <div class="executive-network-groups">
+                <section data-network-group="north">
+                  <div class="executive-network-group-title">
+                    <div><span>North America</span><strong>07 locations</strong></div>
+                    <i></i>
+                  </div>
+                  <div class="executive-location-list">
+                    <article><span>01</span><div><strong>Los Angeles, USA</strong><p>Pier 400</p></div><small>Terminal</small></article>
+                    <article><span>02</span><div><strong>New York / New Jersey, USA</strong><p>Port Elizabeth</p></div><small>Terminal</small></article>
+                    <article><span>03</span><div><strong>Charlotte, USA</strong><p>Regional HQ</p></div><small>Office</small></article>
+                    <article><span>04</span><div><strong>Mobile, USA</strong><p>APM Terminals Mobile</p></div><small>Terminal</small></article>
+                    <article><span>05</span><div><strong>Miami, USA</strong><p>South Florida Container Terminal (SFCT)</p></div><small>Terminal</small></article>
+                    <article><span>06</span><div><strong>Yucatan, Mexico</strong><p>APM Terminals Yucatan</p></div><small>Terminal</small></article>
+                    <article><span>07</span><div><strong>Lazaro, Mexico</strong><p>Lazaro Cardenas</p></div><small>Terminal</small></article>
+                  </div>
+                </section>
+
+                <section data-network-group="latin">
+                  <div class="executive-network-group-title">
+                    <div><span>Latin America</span><strong>10 locations</strong></div>
+                    <i></i>
+                  </div>
+                  <div class="executive-location-list">
+                    <article><span>08</span><div><strong>Quetzal, Guatemala</strong><p>APM Terminals Quetzal</p></div><small>Terminal</small></article>
+                    <article><span>09</span><div><strong>Moin, Costa Rica</strong><p>APM Terminals Moin</p></div><small>Terminal</small></article>
+                    <article><span>10</span><div><strong>Panama</strong><p>Regional office</p></div><small>Office</small></article>
+                    <article><span>11</span><div><strong>Buenaventura, Colombia</strong><p>TCBUEN</p></div><small>Terminal</small></article>
+                    <article><span>12</span><div><strong>Callao, Peru</strong><p>APM Terminals Callao</p></div><small>Terminal</small></article>
+                    <article><span>13</span><div><strong>Pecem, Brazil</strong><p>APM Terminals Pecem</p></div><small>Terminal</small></article>
+                    <article><span>14</span><div><strong>Suape, Brazil</strong><p>APM Terminals Suape</p></div><small>Terminal</small></article>
+                    <article><span>15</span><div><strong>Santos, Brazil</strong><p>Brasil Terminal Portuario</p></div><small>Terminal</small></article>
+                    <article><span>16</span><div><strong>Itapoa, Brazil</strong><p>Porto Itapoa</p></div><small>Terminal</small></article>
+                    <article><span>17</span><div><strong>Buenos Aires, Argentina</strong><p>TC4</p></div><small>Terminal</small></article>
+                  </div>
+                </section>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="scene academy-scene" id="academy" aria-live="polite" hidden>
+          <div class="academy-shell">
+            <header class="academy-header">
+              <button class="brand-lockup" type="button" data-action="login" aria-label="Volver al login">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>
+                  <strong>APM TERMINALS</strong>
+                  <small>Mi Academia HSSE</small>
+                </span>
+              </button>
+              <div class="operator-badge">
+                <span>Face ID validado</span>
+                <strong>Operario de Trinca y Destrinca</strong>
+              </div>
+            </header>
+
+            <section class="operator-hero">
+              <div>
+                <p class="eyebrow">Ruta inteligente por rol</p>
+                <h2>Trinca y Destrinca</h2>
+                <p>
+                  Menos cursos irrelevantes. Más dominio sobre los riesgos reales de la jornada.
+                </p>
+              </div>
+              <div class="certification-ring" aria-label="Progreso de certificación 72%">
+                <strong>72%</strong>
+                <span>Certificación</span>
+              </div>
+            </section>
+
+            <section class="copilot-console" aria-label="HSSE AI Copilot">
+              <div class="copilot-main">
+                <div class="copilot-header">
+                  <div class="copilot-orb" aria-hidden="true"></div>
+                  <div>
+                    <p class="eyebrow">HSSE AI Copilot</p>
+                    <h3>Revisemos tu riesgo real.</h3>
+                  </div>
+                  <span class="live-badge">En vivo</span>
+                </div>
+
+                <div class="chat-stream" id="copilot-stream">
+                  <article class="message ai">
+                    <span>Copilot</span>
+                    <p>
+                      Detecté lluvia ligera, STS activa y pasarela húmeda. Inicia con zona de exclusión y agarre de barras.
+                    </p>
+                  </article>
+                  <article class="message user">
+                    <span>Carlos</span>
+                    <p>¿Qué debo revisar antes de destrincar?</p>
+                  </article>
+                  <article class="message ai">
+                    <span>Copilot</span>
+                    <p id="copilot-answer">
+                      Revisa pasarela, PPE, comunicación con señalero, distancia con STS y estado de twistlocks antes de liberar tensión.
+                    </p>
+                  </article>
+                </div>
+
+                <div class="prompt-rail" aria-label="Preguntas sugeridas">
+                  <button type="button" data-copilot-prompt="pasarela">Pasarela húmeda</button>
+                  <button type="button" data-copilot-prompt="carga">Carga suspendida</button>
+                  <button type="button" data-copilot-prompt="fatiga">Fatiga muscular</button>
+                  <button type="button" data-copilot-prompt="noche">Trabajo nocturno</button>
+                </div>
+              </div>
+
+              <aside class="copilot-actions">
+                <span>Acción prioritaria</span>
+                <strong id="copilot-priority">Verificar zona de exclusión STS</strong>
+                <p id="copilot-reason">
+                  Riesgo elevado por operación simultánea, humedad y movimiento de spreader.
+                </p>
+                <div class="action-stack">
+                  <button type="button">Abrir checklist guiado</button>
+                  <button type="button">Iniciar micro-simulación</button>
+                  <button type="button">Reportar condición insegura</button>
+                </div>
+              </aside>
+            </section>
+
+            <section class="operator-app" aria-label="WebApp de entrenamiento del operario">
+              <aside class="operator-sidebar" aria-label="Perfil del usuario">
+                <div class="profile-card">
+                  <div class="avatar-orb" aria-hidden="true">CM</div>
+                  <div>
+                    <span>Perfil operativo</span>
+                    <h3>Carlos Medina</h3>
+                    <p>Trinca y Destrinca · Turno B · Callao</p>
+                  </div>
+                </div>
+
+                <nav class="operator-tabs" aria-label="Secciones de la app">
+                  <button type="button" class="is-active" data-operator-tab="dashboard">Inicio</button>
+                  <button type="button" data-operator-tab="modules">Módulos</button>
+                  <button type="button" data-operator-tab="simulator">Simulador</button>
+                  <button type="button" data-operator-tab="microlearning">Microlearning</button>
+                  <button type="button" data-operator-tab="evaluation">Trivia</button>
+                  <button type="button" data-operator-tab="resources">Recursos</button>
+                </nav>
+
+                <div class="operator-score">
+                  <span>Puntos</span>
+                  <strong id="operator-points">2,450</strong>
+                  <small>Nivel 07 · Top 12%</small>
+                </div>
+              </aside>
+
+              <div class="operator-stage">
+                <section class="operator-panel is-active" data-operator-panel="dashboard">
+                  <div class="training-hero-card">
+                    <img src="assets/lashing-cover.webp" alt="Portada del módulo Trinca y Destrinca" />
+                    <div>
+                      <p class="eyebrow">Fatal 5 · Ruta asignada</p>
+                      <h3>Trinca y Destrinca Segura</h3>
+                      <p>
+                        Entrenamiento inmersivo para dominar barra de trinca, tensores, postura,
+                        comunicación y liberación segura antes de subir al buque.
+                      </p>
+                      <div class="hero-actions">
+                        <button type="button" class="primary-action" data-operator-tab="simulator">
+                          Continuar misión
+                        </button>
+                        <button type="button" class="secondary-action" data-operator-tab="modules">
+                          Ver módulos
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="operator-metrics">
+                    <article><span>Certificación</span><strong>72%</strong><small>En progreso</small></article>
+                    <article><span>Entrenamiento</span><strong>08:32 h</strong><small>Mes actual</small></article>
+                    <article><span>Riesgos críticos</span><strong>4</strong><small>Asignados hoy</small></article>
+                    <article><span>Checklists</span><strong>18</strong><small>Completados</small></article>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="modules">
+                  <div class="section-heading">
+                    <p class="eyebrow">Catálogo por rol</p>
+                    <h3>Módulos obligatorios y condicionales</h3>
+                  </div>
+                  <div class="module-catalog">
+                    <button type="button" class="module-card is-active" data-training-module="trinca">
+                      <img src="assets/lashing-prologue.webp" alt="" />
+                      <span>Avanzado · 90 min</span>
+                      <strong>Trinca y Destrinca</strong>
+                      <small>Actividad principal</small>
+                    </button>
+                    <button type="button" class="module-card" data-training-module="ergonomia">
+                      <img src="assets/lashing-ergonomics.webp" alt="" />
+                      <span>Crítico · 20 min</span>
+                      <strong>Peso del acero</strong>
+                      <small>Postura lumbar</small>
+                    </button>
+                    <button type="button" class="module-card" data-training-module="tensor">
+                      <img src="assets/lashing-turnbuckle.webp" alt="" />
+                      <span>Crítico · 25 min</span>
+                      <strong>Atrapamientos</strong>
+                      <small>Tensores de rosca</small>
+                    </button>
+                    <button type="button" class="module-card" data-training-module="proteccion">
+                      <img src="assets/lashing-eye-protection.webp" alt="" />
+                      <span>Obligatorio · 15 min</span>
+                      <strong>Protección ocular</strong>
+                      <small>Casco con barbijo</small>
+                    </button>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="simulator">
+                  <div class="simulator-shell">
+                    <div class="simulator-visual">
+                      <img id="simulator-image" src="assets/lashing-prologue.webp" alt="Simulador del módulo de trinca" />
+                      <div class="sim-hud top">
+                        <strong id="simulator-title">Trinca y Destrinca</strong>
+                        <span id="simulator-progress">Progreso 78%</span>
+                      </div>
+                      <div class="sim-hud bottom" id="simulator-instruction">
+                        Instrucción: asegura comunicación, postura y zona de exclusión antes de liberar tensión.
+                      </div>
+                    </div>
+                    <aside class="mission-panel">
+                      <span>Misión activa</span>
+                      <h3 id="mission-title">Liberación segura de barra</h3>
+                      <ol id="mission-steps">
+                        <li>Verifica tensión.</li>
+                        <li>Afloja el tensor.</li>
+                        <li>Retira el pasador.</li>
+                        <li>Libera la barra con control.</li>
+                      </ol>
+                      <button type="button" class="primary-action" data-action="complete-mission">
+                        Completar paso
+                      </button>
+                    </aside>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="microlearning">
+                  <div class="lesson-layout">
+                    <aside>
+                      <span>Lección 2 de 8</span>
+                      <h3 id="lesson-title">Técnica correcta de destrincado</h3>
+                      <button type="button" class="is-active" data-lesson="tension">Verifica la tensión</button>
+                      <button type="button" data-lesson="tensor">Afloja el tensor</button>
+                      <button type="button" data-lesson="pasador">Retira el pasador</button>
+                      <button type="button" data-lesson="barra">Libera la barra</button>
+                    </aside>
+                    <article>
+                      <h3 id="lesson-heading">Afloja el tensor sin exponer los dedos.</h3>
+                      <p id="lesson-copy">
+                        Gira la manija manteniendo ambas manos en el cuerpo exterior del tensor. Nunca introduzcas dedos en el ojal o pasador.
+                      </p>
+                      <img id="lesson-image" src="assets/lashing-turnbuckle.webp" alt="Detalle del tensor de rosca" />
+                    </article>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="evaluation">
+                  <div class="quiz-card">
+                    <div>
+                      <span>Pregunta 3 de 10</span>
+                      <h3>¿Cuál es el principal riesgo al liberar una barra de trinca superior?</h3>
+                    </div>
+                    <div class="quiz-options">
+                      <button type="button" data-quiz="wrong">Que la barra caiga al mar</button>
+                      <button type="button" data-quiz="wrong">Que el tensor se oxide</button>
+                      <button type="button" data-quiz="correct">Que la barra se zafe bruscamente y golpee al operario</button>
+                      <button type="button" data-quiz="wrong">Que el contenedor se deslice por la cubierta</button>
+                    </div>
+                    <p id="quiz-feedback">Selecciona una respuesta para recibir feedback inmediato.</p>
+                  </div>
+                </section>
+
+                <section class="operator-panel" data-operator-panel="resources">
+                  <div class="resource-grid">
+                    <article>
+                      <img src="assets/lashing-eye-protection.webp" alt="" />
+                      <span>Guía visual</span>
+                      <strong>Protección ocular y barbijo</strong>
+                      <button type="button">Abrir</button>
+                    </article>
+                    <article>
+                      <img src="assets/lashing-turnbuckle.webp" alt="" />
+                      <span>Checklist</span>
+                      <strong>Atrapamientos en tensores</strong>
+                      <button type="button">Abrir</button>
+                    </article>
+                    <article>
+                      <img src="assets/operator-training-board.webp" alt="" />
+                      <span>Dashboard</span>
+                      <strong>Progreso y certificación</strong>
+                      <button type="button">Abrir</button>
+                    </article>
+                  </div>
+                </section>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="scene detail-scene" id="detail" aria-live="polite" hidden>
+          <div class="detail-media">
+            <img id="detail-image" alt="" />
+          </div>
+
+          <article class="detail-panel">
+            <button class="back-action" type="button" data-action="home">Volver al hub</button>
+            <p class="eyebrow" id="detail-dimension"></p>
+            <h2 id="detail-title"></h2>
+            <p class="detail-summary" id="detail-summary"></p>
+
+            <div class="detail-rows">
+              <section>
+                <span>Qué activa</span>
+                <p id="detail-purpose"></p>
+              </section>
+              <section>
+                <span>Problema que resuelve</span>
+                <p id="detail-problem"></p>
+              </section>
+              <section>
+                <span>Valor ejecutivo</span>
+                <p id="detail-value"></p>
+              </section>
+            </div>
+
+            <div class="capability-block">
+              <span>Capacidades clave</span>
+              <ul class="keywords" id="detail-keywords"></ul>
+            </div>
+
+            <div class="kpi-strip">
+              <span>Señal de éxito</span>
+              <strong id="detail-kpi"></strong>
+            </div>
+
+            <div class="connections">
+              <span>Conecta con</span>
+              <div id="detail-connections"></div>
+            </div>
+
+            <div class="detail-controls" aria-label="Controles de dimensión">
+              <button type="button" data-action="previous">Anterior</button>
+              <span id="detail-count"></span>
+              <button type="button" data-action="next">Siguiente</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="scene role-scene" id="role" aria-live="polite" hidden>
+          <div class="role-hero">
+            <p class="eyebrow">Exploración por rol</p>
+            <h2 id="role-title"></h2>
+            <p id="role-summary"></p>
+
+            <div class="role-kpis" id="role-kpis"></div>
+          </div>
+
+          <article class="role-panel">
+            <button class="back-action" type="button" data-action="home">Volver al hub</button>
+
+            <div class="role-section">
+              <span>Dimensiones principales</span>
+              <div class="role-dimensions" id="role-dimensions"></div>
+            </div>
+
+            <div class="role-section">
+              <span>Cómo trabaja</span>
+              <ol class="workflow" id="role-workflow"></ol>
+            </div>
+
+            <div class="role-section">
+              <span>Permisos y decisiones</span>
+              <ul class="role-permissions" id="role-permissions"></ul>
+            </div>
+
+            <div class="role-controls" aria-label="Controles de rol">
+              <button type="button" data-action="previous-role">Rol anterior</button>
+              <span id="role-count"></span>
+              <button type="button" data-action="next-role">Rol siguiente</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      if (!window.location.hash) window.location.hash = "executive-americas";
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
