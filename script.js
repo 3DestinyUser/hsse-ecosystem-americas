@@ -306,6 +306,10 @@ const executiveDimensionPlates = {
   Prevent: {
     image: "assets/prevent.webp",
     alt: "Prevent dimension overview: anticipation, signals and preventive action"
+  },
+  "Regional Analytics": {
+    image: "assets/regional-analytics.webp",
+    alt: "Regional Analytics dimension overview: terminal comparison, risk maps and global trends"
   }
 };
 
