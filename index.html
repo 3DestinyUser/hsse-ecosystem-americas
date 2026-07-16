@@ -591,56 +591,40 @@
                 </section>
 
                 <section class="operator-panel" data-operator-panel="modules">
-                  <div class="section-heading">
-                    <p class="eyebrow">Catálogo por rol</p>
-                    <h3>Módulos obligatorios y condicionales</h3>
+                  <div class="module-catalog-header">
+                    <div class="section-heading">
+                      <p class="eyebrow">Academia inteligente por rol</p>
+                      <h3>Todos los módulos de entrenamiento</h3>
+                      <p>Contenido validado, organizado según su aplicación al Operario de Trinca y Destrinca.</p>
+                    </div>
+                    <div class="module-filters" aria-label="Filtrar módulos">
+                      <button type="button" class="is-active" data-module-filter="all">Todos · 10</button>
+                      <button type="button" data-module-filter="required">Obligatorios · 6</button>
+                      <button type="button" data-module-filter="conditional">Condicionales · 3</button>
+                      <button type="button" data-module-filter="interface">Interfaz · 1</button>
+                    </div>
                   </div>
-                  <div class="module-catalog">
-                    <button type="button" class="module-card is-active" data-training-module="trinca">
-                      <img src="assets/lashing-prologue.webp" alt="" />
-                      <span>Avanzado · 90 min</span>
-                      <strong>Trinca y Destrinca</strong>
-                      <small>Actividad principal</small>
-                    </button>
-                    <button type="button" class="module-card" data-training-module="ergonomia">
-                      <img src="assets/lashing-ergonomics.webp" alt="" />
-                      <span>Crítico · 20 min</span>
-                      <strong>Peso del acero</strong>
-                      <small>Postura lumbar</small>
-                    </button>
-                    <button type="button" class="module-card" data-training-module="tensor">
-                      <img src="assets/lashing-turnbuckle.webp" alt="" />
-                      <span>Crítico · 25 min</span>
-                      <strong>Atrapamientos</strong>
-                      <small>Tensores de rosca</small>
-                    </button>
-                    <button type="button" class="module-card" data-training-module="proteccion">
-                      <img src="assets/lashing-eye-protection.webp" alt="" />
-                      <span>Obligatorio · 15 min</span>
-                      <strong>Protección ocular</strong>
-                      <small>Casco con barbijo</small>
-                    </button>
-                  </div>
+                  <div class="module-catalog" id="module-catalog" aria-live="polite"></div>
                 </section>
 
                 <section class="operator-panel" data-operator-panel="overview">
                   <div class="module-overview">
                     <div class="module-overview-copy">
                       <button type="button" class="text-action" data-operator-tab="modules">Volver al catálogo</button>
-                      <p class="eyebrow">Fatal 5 · Nivel avanzado</p>
+                      <p class="eyebrow" id="overview-eyebrow">Fatal 5 · Nivel avanzado</p>
                       <h3 id="overview-title">Trinca y Destrinca</h3>
                       <p id="overview-copy">
                         Aprende a asegurar y liberar contenedores de manera segura, evitando exposición a
                         cargas suspendidas, liberación brusca, atrapamientos y sobreesfuerzo.
                       </p>
                       <div class="module-facts">
-                        <article><span>Duración</span><strong>90 min</strong></article>
-                        <article><span>Nivel</span><strong>Avanzado</strong></article>
-                        <article><span>Estado</span><strong>En progreso · 78%</strong></article>
+                        <article><span>Duración</span><strong id="overview-duration">20 min</strong></article>
+                        <article><span>Nivel</span><strong id="overview-level">Avanzado</strong></article>
+                        <article><span>Aplicación</span><strong id="overview-status">Obligatorio</strong></article>
                       </div>
                       <div class="module-topics">
                         <span>Temas clave</span>
-                        <ul>
+                        <ul id="overview-topics">
                           <li>Tipos de barras, tensores y twistlocks.</li>
                           <li>Postura, línea de fuego y energía acumulada.</li>
                           <li>Comunicación y coordinación entre compañeros.</li>
@@ -654,7 +638,7 @@
                     </div>
                     <div class="module-overview-media">
                       <img id="overview-image" src="assets/lashing-prologue.webp" alt="Operarios realizando trinca y destrinca" />
-                      <div><span>Competencia objetivo</span><strong>Ejecutar la secuencia sin exposición a Fatal 5.</strong></div>
+                      <div><span>Competencia objetivo</span><strong id="overview-competence">Ejecutar la secuencia sin exposición a Fatal 5.</strong></div>
                     </div>
                   </div>
                 </section>
@@ -692,10 +676,7 @@
                     <aside>
                       <span>Lección 2 de 8</span>
                       <h3 id="lesson-title">Técnica correcta de destrincado</h3>
-                      <button type="button" class="is-active" data-lesson="tension">Verifica la tensión</button>
-                      <button type="button" data-lesson="tensor">Afloja el tensor</button>
-                      <button type="button" data-lesson="pasador">Retira el pasador</button>
-                      <button type="button" data-lesson="barra">Libera la barra</button>
+                      <div class="lesson-steps" id="lesson-steps"></div>
                     </aside>
                     <article>
                       <h3 id="lesson-heading">Afloja el tensor sin exponer los dedos.</h3>
@@ -711,9 +692,9 @@
                   <div class="quiz-card">
                     <div>
                       <span>Pregunta 3 de 10</span>
-                      <h3>¿Cuál es el principal riesgo al liberar una barra de trinca superior?</h3>
+                      <h3 id="quiz-question">¿Cuál es el principal riesgo al liberar una barra de trinca superior?</h3>
                     </div>
-                    <div class="quiz-options">
+                    <div class="quiz-options" id="quiz-options">
                       <button type="button" data-quiz="wrong">Que la barra caiga al mar</button>
                       <button type="button" data-quiz="wrong">Que el tensor se oxide</button>
                       <button type="button" data-quiz="correct">Que la barra se zafe bruscamente y golpee al operario</button>
@@ -724,23 +705,27 @@
                 </section>
 
                 <section class="operator-panel" data-operator-panel="resources">
+                  <div class="section-heading compact">
+                    <p class="eyebrow">Biblioteca del módulo</p>
+                    <h3 id="resource-module-title">Trinca y Destrinca</h3>
+                  </div>
                   <div class="resource-grid">
                     <article>
-                      <img src="assets/lashing-eye-protection.webp" alt="" />
+                      <img id="resource-guide-image" src="assets/lashing-eye-protection.webp" alt="" />
                       <span>Guía visual</span>
-                      <strong>Protección ocular y barbijo</strong>
+                      <strong id="resource-guide-title">Guía visual de controles críticos</strong>
                       <button type="button" data-operator-tab="microlearning">Abrir guía</button>
                     </article>
                     <article>
-                      <img src="assets/lashing-turnbuckle.webp" alt="" />
+                      <img id="resource-checklist-image" src="assets/lashing-turnbuckle.webp" alt="" />
                       <span>Checklist</span>
-                      <strong>Atrapamientos en tensores</strong>
+                      <strong id="resource-checklist-title">Checklist antes de iniciar</strong>
                       <button type="button" data-operator-tab="microlearning">Abrir checklist</button>
                     </article>
                     <article>
-                      <img src="assets/operator-training-board.webp" alt="" />
+                      <img id="resource-case-image" src="assets/operator-training-board.webp" alt="" />
                       <span>Dashboard</span>
-                      <strong>Progreso y certificación</strong>
+                      <strong id="resource-case-title">Caso real y lección aprendida</strong>
                       <button type="button" data-operator-tab="progress">Ver progreso</button>
                     </article>
                   </div>
@@ -755,10 +740,10 @@
                       <span>Se otorga a</span>
                       <strong class="certificate-name">Carlos Medina</strong>
                       <p>por completar satisfactoriamente el módulo</p>
-                      <h4>Trinca y Destrinca Segura</h4>
+                      <h4 id="certificate-module">Trinca y Destrinca Segura</h4>
                       <div class="certificate-data">
                         <span>Nivel<strong>Avanzado</strong></span>
-                        <span>Duración<strong>90 minutos</strong></span>
+                        <span>Duración<strong id="certificate-duration">20 minutos</strong></span>
                         <span>Puntuación<strong>950 / 1000</strong></span>
                       </div>
                       <div class="certificate-seal" aria-hidden="true">★</div>
@@ -932,6 +917,6 @@
     <script>
       if (!window.location.hash) window.location.hash = "executive-americas";
     </script>
-    <script src="script.js?v=20260716-7"></script>
+    <script src="script.js?v=20260716-8"></script>
   </body>
 </html>

@@ -485,57 +485,255 @@ const copilotResponses = {
 };
 
 const trainingModules = {
+  pasarela: {
+    image: "assets/module-pasarela.webp",
+    title: "Inspección de Pasarela",
+    level: "Intermedio",
+    duration: "15 min",
+    category: "required",
+    status: "Obligatorio",
+    roleNote: "Acceso y egreso diario del buque",
+    progress: "Progreso 62%",
+    description: "Verifica que el acceso al buque sea estable, iluminado y libre de condiciones que puedan causar caídas.",
+    competence: "Autorizar o detener el uso de la pasarela según su condición real.",
+    topics: ["Barandas, peldaños y superficie", "Iluminación y orden", "Marea y movimiento del buque", "Reporte y restricción de acceso"],
+    mission: "Inspección previa al embarque",
+    instruction: "Instrucción: recorre visualmente el acceso y detén el uso ante cualquier desviación crítica.",
+    steps: ["Revisa estructura.", "Confirma iluminación.", "Evalúa superficie.", "Libera o restringe acceso."],
+    lesson: "Una pasarela segura se verifica antes de cada uso.",
+    copy: "Busca daños, humedad, obstrucciones y cambios por marea. Si un control falla, restringe el acceso y reporta.",
+    prompt: "pasarela",
+    quiz: {
+      question: "¿Qué debes hacer si detectas una baranda suelta en la pasarela?",
+      options: ["Usarla con mayor cuidado", "Detener el acceso y reportar la condición", "Esperar a que otro trabajador la pruebe", "Continuar si hay buena iluminación"],
+      correct: "Detener el acceso y reportar la condición",
+      feedback: "Una barrera física defectuosa exige restringir el acceso hasta recuperar el control."
+    }
+  },
+  transportes: {
+    image: "assets/module-transportes.webp",
+    title: "Transportes",
+    level: "Básico",
+    duration: "20 min",
+    category: "required",
+    status: "Obligatorio",
+    roleNote: "Interacción con vehículos y equipos móviles",
+    progress: "Progreso 100%",
+    description: "Reconoce rutas, puntos ciegos y reglas de convivencia segura con tractores, camiones y equipos móviles.",
+    competence: "Desplazarse por la terminal sin entrar en la línea de movimiento de un vehículo.",
+    topics: ["Rutas peatonales", "Puntos ciegos", "Contacto visual", "Distancias y velocidad"],
+    mission: "Cruce seguro de patio",
+    instruction: "Instrucción: permanece en la ruta señalizada y confirma contacto visual antes de cruzar.",
+    steps: ["Detente en el cruce.", "Observa ambos sentidos.", "Confirma contacto visual.", "Cruza por zona habilitada."],
+    lesson: "Si el operador no te ve, no avances.",
+    copy: "Los equipos portuarios tienen puntos ciegos extensos. Nunca asumas que el conductor conoce tu posición.",
+    prompt: "noche",
+    quiz: {
+      question: "¿Cuándo es seguro cruzar frente a un equipo móvil?",
+      options: ["Cuando escuchas el motor", "Cuando el equipo avanza lentamente", "Cuando confirmas contacto visual y autorización", "Cuando otro peatón también cruza"],
+      correct: "Cuando confirmas contacto visual y autorización",
+      feedback: "El contacto visual y la confirmación del operador son controles esenciales antes de cruzar."
+    }
+  },
+  altura: {
+    image: "assets/module-altura.webp",
+    title: "Trabajos en Altura",
+    level: "Crítico",
+    duration: "15 min",
+    category: "conditional",
+    status: "Condicional",
+    roleNote: "Cuando trabaja en estructuras o sin jaula",
+    progress: "No asignado",
+    description: "Controla el riesgo de caída cuando la tarea requiere acceder a plataformas, estructuras o posiciones elevadas.",
+    competence: "Verificar protección contra caídas y mantener conexión segura durante toda la tarea.",
+    topics: ["Permiso de trabajo", "Anclajes certificados", "Arnés y doble cabo", "Plan de rescate"],
+    mission: "Acceso protegido en altura",
+    instruction: "Instrucción: valida anclaje, equipo personal y rescate antes de abandonar una superficie protegida.",
+    steps: ["Revisa el permiso.", "Inspecciona el arnés.", "Conecta al anclaje.", "Mantén 100% de amarre."],
+    lesson: "La protección debe existir antes de exponerte al borde.",
+    copy: "No comiences si falta un anclaje aprobado, una barrera o un plan de rescate aplicable.",
+    prompt: "noche",
+    quiz: {
+      question: "¿Qué condición debe cumplirse antes de iniciar un trabajo en altura?",
+      options: ["Tener experiencia previa", "Contar con anclaje, protección y plan de rescate", "Trabajar acompañado", "Usar guantes anticorte"],
+      correct: "Contar con anclaje, protección y plan de rescate",
+      feedback: "El sistema contra caídas y el rescate deben estar definidos antes de la exposición."
+    }
+  },
+  energia: {
+    image: "assets/module-energia.webp",
+    title: "Energía Almacenada",
+    level: "Crítico",
+    duration: "18 min",
+    category: "conditional",
+    status: "Condicional",
+    roleNote: "Solo ante intervención de equipos bloqueados",
+    progress: "No asignado",
+    description: "Identifica y controla energía eléctrica, hidráulica, neumática, mecánica o gravitacional antes de intervenir.",
+    competence: "Reconocer cuándo detenerse y exigir aislamiento LOTO antes de cualquier intervención.",
+    topics: ["Fuentes de energía", "Aislamiento LOTO", "Liberación de energía residual", "Verificación de cero energía"],
+    mission: "Verificación de energía cero",
+    instruction: "Instrucción: identifica todas las fuentes, aísla, bloquea y verifica antes de tocar el equipo.",
+    steps: ["Identifica fuentes.", "Aísla el equipo.", "Bloquea y etiqueta.", "Verifica energía cero."],
+    lesson: "Apagado no significa aislado.",
+    copy: "La energía puede permanecer almacenada aun con el equipo detenido. Solo una verificación confirma condición segura.",
+    prompt: "carga",
+    quiz: {
+      question: "¿Qué confirma que un equipo está seguro para intervenir?",
+      options: ["El botón de parada activado", "El motor sin ruido", "El aislamiento y la verificación de energía cero", "La autorización verbal del operador"],
+      correct: "El aislamiento y la verificación de energía cero",
+      feedback: "LOTO requiere aislar todas las fuentes y verificar que no quede energía residual."
+    }
+  },
+  cargas: {
+    image: "assets/module-cargas.webp",
+    title: "Cargas Suspendidas",
+    level: "Crítico",
+    duration: "15 min",
+    category: "required",
+    status: "Obligatorio",
+    roleNote: "Exposición permanente a STS y spreaders",
+    progress: "Progreso 100%",
+    description: "Previene exposición bajo contenedores, spreaders y accesorios de izaje durante movimientos de carga.",
+    competence: "Reconocer la zona de exclusión y permanecer fuera de la trayectoria de la carga.",
+    topics: ["Zona de exclusión", "Trayectoria de carga", "Señales y comunicación", "Condiciones de detención"],
+    mission: "Control de zona de exclusión",
+    instruction: "Instrucción: identifica la trayectoria y mantén a todo el equipo fuera del área de caída potencial.",
+    steps: ["Ubica la carga.", "Define exclusión.", "Confirma comunicación.", "Detén ante ingreso no autorizado."],
+    lesson: "Nunca trabajes debajo de una carga suspendida.",
+    copy: "La carga puede desplazarse, girar o caer sin aviso. La distancia y la exclusión son controles que no se negocian.",
+    prompt: "carga",
+    quiz: {
+      question: "¿Dónde debes ubicarte durante el movimiento de una carga suspendida?",
+      options: ["Debajo para observarla", "Dentro del radio del spreader", "Fuera de la trayectoria y zona de caída", "Junto al operador del equipo"],
+      correct: "Fuera de la trayectoria y zona de caída",
+      feedback: "La única posición segura es fuera de toda trayectoria o zona de caída potencial."
+    }
+  },
+  contratistas: {
+    image: "assets/module-contratistas.webp",
+    title: "Contratistas",
+    level: "Intermedio",
+    duration: "15 min",
+    category: "conditional",
+    status: "Condicional",
+    roleNote: "Para líderes que coordinan contratistas",
+    progress: "No asignado",
+    description: "Asegura que terceros comprendan los riesgos, controles, permisos y responsabilidades antes de ejecutar tareas.",
+    competence: "Confirmar inducción, alcance, controles y supervisión antes de autorizar el trabajo.",
+    topics: ["Inducción y competencia", "Permisos de trabajo", "Interfaz operativa", "Stop Work Authority"],
+    mission: "Validación de contratista",
+    instruction: "Instrucción: revisa competencia, permiso, alcance y controles antes de liberar el trabajo.",
+    steps: ["Confirma inducción.", "Valida permiso.", "Alinea interfaces.", "Autoriza y supervisa."],
+    lesson: "La responsabilidad HSSE no se terceriza.",
+    copy: "El contratista debe conocer los mismos controles críticos y criterios de detención que el personal propio.",
+    prompt: "pasarela",
+    quiz: {
+      question: "¿Qué debe verificarse antes de que un contratista comience una tarea?",
+      options: ["Solo su identificación", "Inducción, competencia, permiso y controles", "La duración estimada", "El nombre de su empresa"],
+      correct: "Inducción, competencia, permiso y controles",
+      feedback: "La autorización requiere confirmar competencia, alcance y controles aplicables."
+    }
+  },
+  jaula: {
+    image: "assets/module-jaula.webp",
+    title: "Trabajo en Jaula",
+    level: "Crítico",
+    duration: "18 min",
+    category: "required",
+    status: "Obligatorio",
+    roleNote: "Lashing superior con safety cage",
+    progress: "Progreso 45%",
+    description: "Prepara y ejecuta tareas desde safety cage manteniendo integridad, comunicación y protección contra caídas.",
+    competence: "Ingresar, permanecer y salir de la jaula con todos los controles críticos activos.",
+    topics: ["Inspección de jaula", "Puerta y anclaje", "Comunicación con operador", "Rescate y emergencia"],
+    mission: "Ingreso seguro a safety cage",
+    instruction: "Instrucción: inspecciona estructura, cierre, anclaje y comunicación antes del izaje.",
+    steps: ["Inspecciona la jaula.", "Verifica puerta.", "Conecta protección.", "Confirma comunicación."],
+    lesson: "La jaula se valida antes de despegar del suelo.",
+    copy: "Una desviación estructural, de cierre o comunicación obliga a detener el izaje y corregir.",
+    prompt: "noche",
+    quiz: {
+      question: "¿Qué debes hacer si la puerta de la safety cage no cierra correctamente?",
+      options: ["Sujetrarla con la mano", "Usarla solo a baja altura", "Detener el izaje y retirar la jaula de servicio", "Pedir al operador que avance lentamente"],
+      correct: "Detener el izaje y retirar la jaula de servicio",
+      feedback: "La integridad y cierre de la jaula son controles críticos previos al izaje."
+    }
+  },
   trinca: {
-    image: "assets/lashing-prologue.webp",
+    image: "assets/module-trinca.webp",
     title: "Trinca y Destrinca",
+    level: "Avanzado",
+    duration: "20 min",
+    category: "required",
+    status: "Obligatorio",
+    roleNote: "Actividad principal del rol",
     progress: "Progreso 78%",
+    description: "Asegura y libera contenedores controlando barras, twistlocks, turnbuckles, postura y liberación brusca.",
+    competence: "Ejecutar la secuencia completa sin exposición a línea de fuego, atrapamiento o sobreesfuerzo.",
+    topics: ["Barras, twistlocks y turnbuckles", "Tensión y liberación brusca", "Postura y ergonomía", "Comunicación y secuencia"],
     mission: "Liberación segura de barra",
-    instruction:
-      "Instrucción: asegura comunicación, postura y zona de exclusión antes de liberar tensión.",
+    instruction: "Instrucción: asegura comunicación, postura y zona de exclusión antes de liberar tensión.",
     steps: ["Verifica tensión.", "Afloja el tensor.", "Retira el pasador.", "Libera la barra con control."],
     lesson: "Afloja el tensor sin exponer los dedos.",
-    copy:
-      "Mantén ambas manos en el cuerpo exterior del tensor. Nunca introduzcas dedos en el ojal o pasador.",
-    prompt: "carga"
+    copy: "Mantén ambas manos en el cuerpo exterior del tensor. Nunca introduzcas dedos en el ojal o pasador.",
+    prompt: "carga",
+    quiz: {
+      question: "¿Cuál es el principal riesgo al liberar una barra de trinca superior?",
+      options: ["Que la barra caiga al mar", "Que el tensor se oxide", "Que la barra se zafe bruscamente y golpee al operario", "Que el contenedor se deslice por la cubierta"],
+      correct: "Que la barra se zafe bruscamente y golpee al operario",
+      feedback: "La tensión acumulada puede liberar la barra bruscamente. Controla postura, PPE y línea de fuego."
+    }
   },
-  ergonomia: {
-    image: "assets/lashing-ergonomics.webp",
-    title: "Peso del acero",
-    progress: "Progreso 64%",
-    mission: "Levante seguro de barra",
-    instruction:
-      "Instrucción: flexiona rodillas, activa piernas y mantén espalda recta al levantar la barra.",
-    steps: ["Evalúa peso y agarre.", "Alinea espalda y casco.", "Levanta con piernas.", "Pausa si aparece fatiga."],
-    lesson: "La barra se controla con piernas, no con la espalda.",
-    copy:
-      "La fatiga lumbar reduce fuerza y precisión. Usa postura estable, evita torsión y pide apoyo ante barras largas.",
-    prompt: "fatiga"
+  rtg: {
+    image: "assets/module-rtg.webp",
+    title: "RTG",
+    level: "Avanzado",
+    duration: "25 min",
+    category: "interface",
+    status: "Interfaz",
+    roleNote: "Conciencia de riesgo, no operación del equipo",
+    progress: "Conocimiento esencial",
+    description: "Para el trincador, cubre zonas de exclusión, puntos ciegos, comunicación y circulación alrededor de RTG.",
+    competence: "Interactuar de forma segura con RTG sin asumir funciones de operación o mantenimiento.",
+    topics: ["Zonas de exclusión", "Puntos ciegos", "Comunicación con operador", "Reglas de circulación"],
+    mission: "Interfaz segura con RTG",
+    instruction: "Instrucción: permanece visible, respeta exclusiones y nunca cruces sin confirmación del operador.",
+    steps: ["Identifica el RTG.", "Ubica puntos ciegos.", "Confirma contacto.", "Mantén distancia."],
+    lesson: "Conocer el riesgo no significa operar el equipo.",
+    copy: "El Operario de Trinca necesita reglas de interfaz. Comandos, cabina, hidráulica y mantenimiento pertenecen al Operador RTG.",
+    prompt: "noche",
+    quiz: {
+      question: "¿Qué conocimiento de RTG corresponde al Operario de Trinca?",
+      options: ["Uso de joystick", "Mantenimiento hidráulico", "Zonas de exclusión y puntos ciegos", "Procedimiento de estiba"],
+      correct: "Zonas de exclusión y puntos ciegos",
+      feedback: "El trincador necesita conocimiento de interfaz, no entrenamiento de operación RTG."
+    }
   },
-  tensor: {
-    image: "assets/lashing-turnbuckle.webp",
-    title: "Atrapamientos",
-    progress: "Progreso 52%",
-    mission: "Control de turnbuckle",
-    instruction:
-      "Instrucción: mantén dedos fuera del ojal, pasador y línea de cierre del tensor.",
-    steps: ["Ubica zona de atrapamiento.", "Toma el cuerpo exterior.", "Gira sin cruzar dedos.", "Retira manos antes de liberar."],
-    lesson: "Tus manos nunca entran en la línea de atrapamiento.",
-    copy:
-      "Un movimiento repentino puede aplastar o cizallar dedos. La técnica correcta separa agarre, tensión y retiro.",
-    prompt: "carga"
-  },
-  proteccion: {
-    image: "assets/lashing-eye-protection.webp",
-    title: "Protección ocular",
-    progress: "Progreso 86%",
-    mission: "PPE antes de liberar tensión",
-    instruction:
-      "Instrucción: confirma gafas ajustadas, barbijo al mentón y protección facial completa.",
-    steps: ["Revisa casco.", "Ajusta barbijo.", "Verifica gafas.", "Mantén rostro fuera de trayectoria."],
-    lesson: "Protege ojos y rostro antes de acercarte al tensor.",
-    copy:
-      "Las barras superiores pueden zafarse de forma brusca. El PPE correcto reduce consecuencias ante liberación inesperada.",
-    prompt: "pasarela"
+  incendios: {
+    image: "assets/module-incendios.webp",
+    title: "Combate de Incendios",
+    level: "Intermedio",
+    duration: "20 min",
+    category: "required",
+    status: "Obligatorio",
+    roleNote: "Respuesta inicial y evacuación",
+    progress: "Progreso 35%",
+    description: "Reconoce alarmas, tipos de fuego, rutas de evacuación y límites seguros de una respuesta inicial.",
+    competence: "Alertar, evacuar y actuar solo ante un fuego incipiente cuando esté entrenado y sea seguro.",
+    topics: ["Alarma y comunicación", "Clases de fuego", "Uso inicial de extintor", "Evacuación y punto de reunión"],
+    mission: "Respuesta inicial ante humo",
+    instruction: "Instrucción: activa la alarma, evalúa una salida segura y prioriza la evacuación.",
+    steps: ["Alerta al equipo.", "Identifica el fuego.", "Mantén salida disponible.", "Evacúa o responde si es seguro."],
+    lesson: "Primero alerta y asegura tu ruta de salida.",
+    copy: "Un extintor se usa solo ante fuego incipiente, con capacitación y una vía de escape disponible.",
+    prompt: "noche",
+    quiz: {
+      question: "¿Cuál es la primera acción al detectar un incendio?",
+      options: ["Buscar un extintor", "Activar la alarma y comunicar", "Abrir puertas y ventanas", "Recoger herramientas"],
+      correct: "Activar la alarma y comunicar",
+      feedback: "La alerta temprana activa la respuesta y protege a todas las personas expuestas."
+    }
   }
 };
 
@@ -581,6 +779,8 @@ const operatorSteps = [
 
 let missionStep = 0;
 let activeOperatorStep = 0;
+let activeTrainingModule = "trinca";
+let activeModuleFilter = "all";
 
 function getDimension(id) {
   return dimensions.find((item) => item.id === id);
@@ -686,6 +886,8 @@ function openAcademy() {
   app.style.setProperty("--accent", "#ff5a12");
   setScenes("academy");
   setActiveNav("");
+  setModuleFilter("all");
+  setTrainingModule("trinca");
   setOperatorTab("hero");
   document.title = "Mi Academia HSSE | Trinca y Destrinca";
   if (!isRouting) {
@@ -1096,6 +1298,38 @@ function updateCopilot(promptId) {
   copilotReason.textContent = response.reason;
 }
 
+function renderModuleCatalog(filter = activeModuleFilter) {
+  const catalog = document.querySelector("#module-catalog");
+  if (!catalog) return;
+  activeModuleFilter = filter;
+  const modules = Object.entries(trainingModules).filter(([, module]) => filter === "all" || module.category === filter);
+
+  catalog.innerHTML = modules
+    .map(
+      ([id, module]) => `
+        <button type="button" class="module-card ${id === activeTrainingModule ? "is-active" : ""}" data-training-module="${id}">
+          <img src="${module.image}" alt="${module.title}" />
+          <span>${module.level} · ${module.duration}</span>
+          <strong>${module.title}</strong>
+          <small>${module.roleNote}</small>
+          <em data-category="${module.category}">${module.status}</em>
+        </button>
+      `
+    )
+    .join("");
+
+  document.querySelectorAll("[data-module-filter]").forEach((button) => {
+    const isActive = button.dataset.moduleFilter === filter;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
+
+function setModuleFilter(filter) {
+  if (!["all", "required", "conditional", "interface"].includes(filter)) return;
+  renderModuleCatalog(filter);
+}
+
 function setOperatorTab(tabId) {
   const targetPanel = document.querySelector(`[data-operator-panel="${tabId}"]`);
   if (!targetPanel) return;
@@ -1149,6 +1383,7 @@ function verifyCertificate() {
 function setTrainingModule(moduleId) {
   const module = trainingModules[moduleId];
   if (!module) return;
+  activeTrainingModule = moduleId;
 
   document.querySelectorAll("[data-training-module]").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.trainingModule === moduleId);
@@ -1165,8 +1400,32 @@ function setTrainingModule(moduleId) {
   const lessonImage = document.querySelector("#lesson-image");
   const overviewTitle = document.querySelector("#overview-title");
   const overviewImage = document.querySelector("#overview-image");
+  const overviewEyebrow = document.querySelector("#overview-eyebrow");
+  const overviewCopy = document.querySelector("#overview-copy");
+  const overviewDuration = document.querySelector("#overview-duration");
+  const overviewLevel = document.querySelector("#overview-level");
+  const overviewStatus = document.querySelector("#overview-status");
+  const overviewTopics = document.querySelector("#overview-topics");
+  const overviewCompetence = document.querySelector("#overview-competence");
+  const lessonTitle = document.querySelector("#lesson-title");
+  const lessonSteps = document.querySelector("#lesson-steps");
+  const quizQuestion = document.querySelector("#quiz-question");
+  const quizOptions = document.querySelector("#quiz-options");
+  const quizFeedback = document.querySelector("#quiz-feedback");
+  const resourceModuleTitle = document.querySelector("#resource-module-title");
+  const resourceGuideTitle = document.querySelector("#resource-guide-title");
+  const resourceChecklistTitle = document.querySelector("#resource-checklist-title");
+  const resourceCaseTitle = document.querySelector("#resource-case-title");
+  const resourceGuideImage = document.querySelector("#resource-guide-image");
+  const resourceChecklistImage = document.querySelector("#resource-checklist-image");
+  const resourceCaseImage = document.querySelector("#resource-case-image");
+  const certificateModule = document.querySelector("#certificate-module");
+  const certificateDuration = document.querySelector("#certificate-duration");
 
-  if (simulatorImage) simulatorImage.src = module.image;
+  if (simulatorImage) {
+    simulatorImage.src = module.image;
+    simulatorImage.alt = `Simulador: ${module.title}`;
+  }
   if (simulatorTitle) simulatorTitle.textContent = module.title;
   if (simulatorProgress) simulatorProgress.textContent = module.progress;
   if (simulatorInstruction) simulatorInstruction.textContent = module.instruction;
@@ -1175,12 +1434,68 @@ function setTrainingModule(moduleId) {
   if (lessonHeading) lessonHeading.textContent = module.lesson;
   if (lessonCopy) lessonCopy.textContent = module.copy;
   if (lessonImage) lessonImage.src = module.image;
+  if (lessonTitle) lessonTitle.textContent = `${module.title}: control clave`;
+  if (lessonSteps) {
+    lessonSteps.innerHTML = module.steps
+      .map(
+        (step, index) =>
+          `<button type="button" class="${index === 0 ? "is-active" : ""}" data-module-lesson="${index}">${step}</button>`
+      )
+      .join("");
+  }
   if (overviewTitle) overviewTitle.textContent = module.title;
   if (overviewImage) overviewImage.src = module.image;
+  if (overviewEyebrow) overviewEyebrow.textContent = `${module.status} · Nivel ${module.level}`;
+  if (overviewCopy) overviewCopy.textContent = module.description;
+  if (overviewDuration) overviewDuration.textContent = module.duration;
+  if (overviewLevel) overviewLevel.textContent = module.level;
+  if (overviewStatus) overviewStatus.textContent = module.status;
+  if (overviewTopics) overviewTopics.innerHTML = module.topics.map((topic) => `<li>${topic}</li>`).join("");
+  if (overviewCompetence) overviewCompetence.textContent = module.competence;
+  if (quizQuestion) quizQuestion.textContent = module.quiz.question;
+  if (quizOptions) {
+    quizOptions.innerHTML = module.quiz.options
+      .map(
+        (option) =>
+          `<button type="button" data-quiz="${option === module.quiz.correct ? "correct" : "wrong"}">${option}</button>`
+      )
+      .join("");
+  }
+  if (quizFeedback) quizFeedback.textContent = "Selecciona una respuesta para recibir feedback inmediato.";
+  if (resourceModuleTitle) resourceModuleTitle.textContent = module.title;
+  if (resourceGuideTitle) resourceGuideTitle.textContent = `Guía visual · ${module.title}`;
+  if (resourceChecklistTitle) resourceChecklistTitle.textContent = `Checklist · ${module.title}`;
+  if (resourceCaseTitle) resourceCaseTitle.textContent = `Caso real · ${module.title}`;
+  [resourceGuideImage, resourceChecklistImage, resourceCaseImage].forEach((image) => {
+    if (image) {
+      image.src = module.image;
+      image.alt = module.title;
+    }
+  });
+  if (certificateModule) certificateModule.textContent = module.title;
+  if (certificateDuration) certificateDuration.textContent = module.duration.replace("min", "minutos");
 
   missionStep = 0;
   updateMissionStep();
   updateCopilot(module.prompt);
+}
+
+function setModuleLesson(index) {
+  const module = trainingModules[activeTrainingModule];
+  const step = module?.steps[index];
+  if (!module || !step) return;
+  document.querySelectorAll("[data-module-lesson]").forEach((button) => {
+    button.classList.toggle("is-active", Number(button.dataset.moduleLesson) === index);
+  });
+  const heading = document.querySelector("#lesson-heading");
+  const copy = document.querySelector("#lesson-copy");
+  const image = document.querySelector("#lesson-image");
+  if (heading) heading.textContent = step;
+  if (copy) copy.textContent = `${module.topics[index] || module.lesson}. ${module.copy}`;
+  if (image) {
+    image.src = module.image;
+    image.alt = module.title;
+  }
 }
 
 function setLesson(lessonId) {
@@ -1225,17 +1540,16 @@ function answerQuiz(result, button) {
   });
 
   const feedback = document.querySelector("#quiz-feedback");
+  const module = trainingModules[activeTrainingModule];
   if (result === "correct") {
     button.classList.add("is-correct");
     if (feedback) {
-      feedback.textContent =
-        "Correcto. La liberación brusca puede golpear rostro, manos o cuerpo. Mantén PPE, postura y línea de fuego controladas.";
+      feedback.textContent = `Correcto. ${module.quiz.feedback}`;
     }
   } else {
     button.classList.add("is-wrong");
     if (feedback) {
-      feedback.textContent =
-        "Casi. El riesgo principal es que la barra se zafe bruscamente por tensión acumulada.";
+      feedback.textContent = `Revisa el control clave. La respuesta correcta es: ${module.quiz.correct}.`;
     }
   }
 }
@@ -1288,10 +1602,22 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  const moduleFilterTarget = event.target.closest("[data-module-filter]");
+  if (moduleFilterTarget) {
+    setModuleFilter(moduleFilterTarget.dataset.moduleFilter);
+    return;
+  }
+
   const moduleTarget = event.target.closest("[data-training-module]");
   if (moduleTarget) {
     setTrainingModule(moduleTarget.dataset.trainingModule);
     setOperatorTab("overview");
+    return;
+  }
+
+  const moduleLessonTarget = event.target.closest("[data-module-lesson]");
+  if (moduleLessonTarget) {
+    setModuleLesson(Number(moduleLessonTarget.dataset.moduleLesson));
     return;
   }
 
@@ -1422,4 +1748,6 @@ function routeFromHash() {
 }
 
 createNav("dimensions");
+renderModuleCatalog();
+setTrainingModule("trinca");
 routeFromHash();
